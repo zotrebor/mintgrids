@@ -648,11 +648,11 @@ footer {
   width: 100%;
 }
 
-/* =====================
+/* ======================================
 
-   Animaciones y Keyframes
+   Animaciones y Keyframes para Botón
 
-===================== */
+========================================= */
 
 @keyframes aparecer {
   0% { opacity: 0; transform: translateY(-30px); }
