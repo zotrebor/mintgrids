@@ -1,41 +1,96 @@
-// Animacion del logo de MintGrids
-        document.addEventListener('DOMContentLoaded', () => {
-            const svgElement = document.getElementById('Layer_1');
-            
-            // Añade la clase 'active'. Esta clase NO EXISTE en tu CSS actual, 
-            // pero si la necesitas para una transición extra, agrégala al CSS.
-            // Si el logo ya se anima, puedes ignorar esta parte.
-            if (svgElement) {
-                svgElement.classList.add('active'); 
-            }
-        });
- // ====== MENÚ MÓVIL ======
-  const toggleButton = document.getElementById('toggle-button');
-  const navLinks = document.getElementById('menu-mobile');
-  if (toggleButton && navLinks) {
-    toggleButton.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+/* =============================================
+   MINT GRIDS — script.js v2
+   ============================================= */
+
+// --- NAV: scroll state + burger menu ---
+(function () {
+  const nav     = document.getElementById('nav');
+  const burger  = document.getElementById('burger');
+  const links   = document.getElementById('nav-links');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  burger.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+
+  // Cerrar menú al hacer click en un enlace
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
     });
-  }
-  // ====== LAZY IMAGES ======
-  document.addEventListener('contextmenu', event => event.preventDefault());
-  const lazyImages = document.querySelectorAll('.lazy-image');
-  const observer = new IntersectionObserver((entries, observer) => {
+  });
+})();
+
+// --- SCROLL REVEAL ---
+(function () {
+  const items = document.querySelectorAll('.scroll-reveal');
+
+  if (!items.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  items.forEach(el => observer.observe(el));
+})();
+
+// --- HERO REVEAL (sin esperar scroll) ---
+(function () {
+  const reveals = document.querySelectorAll('.hero .reveal');
+  // Pequeño delay para que el CSS de transición tenga tiempo de registrarse
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      reveals.forEach(el => el.classList.add('visible'));
+    }, 80);
+  });
+})();
+
+// --- LAZY IMAGES ---
+(function () {
+  const images = document.querySelectorAll('.lazy-image[data-src]');
+  if (!images.length) return;
+
+  const imgObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        const src = img.getAttribute('data-src');
-        img.src = src;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
         img.classList.remove('lazy-image');
-        observer.unobserve(img);
+        obs.unobserve(img);
       }
     });
-  });
-  lazyImages.forEach(image => {
-    observer.observe(image);
-  });
+  }, { rootMargin: '200px' });
 
-    // CLONAR el logos-slide y añadirlo dentro de logos-track
-    var track = document.querySelector(".logos-track");
-	var copy = document.querySelector(".logos-slide").cloneNode(true);
-	track.appendChild(copy);
+  images.forEach(img => imgObserver.observe(img));
+})();
+
+// --- MARQUEE: clonar slide para loop continuo ---
+(function () {
+  const track = document.querySelector('.marquee-track');
+  if (!track) return;
+  const slide = track.querySelector('.marquee-slide');
+  if (!slide) return;
+  const clone = slide.cloneNode(true);
+  track.appendChild(clone);
+})();
+
+// --- PROTECCIÓN CLIC DERECHO EN IMÁGENES ---
+document.addEventListener('contextmenu', e => {
+  if (e.target.tagName === 'IMG') e.preventDefault();
+});
