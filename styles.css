@@ -94,7 +94,7 @@ em { font-style: italic; color: var(--accent); }
   list-style: none;
 }
 .nav__links a {
-  font-size: 1rem;
+  font-size: 0.5rem;
   font-weight: 400;
   color: var(--text-2);
   letter-spacing: 0.02em;
