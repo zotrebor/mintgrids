@@ -31,6 +31,7 @@ html { scroll-behavior: smooth; background: var(--bg); }
 body {
   font-family: var(--sans);
   color: var(--text);
+  background: radial-gradient(circle at top, #1b1f2a, #0b0d12);
   background: var(--bg);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
