@@ -81,7 +81,7 @@ em { font-style: italic; color: var(--accent); }
   display: flex;
   align-items: center;
   color: #fff;
-  height: 44px;
+  height: 55px;
 }
 .nav__logo svg {
   height: 38px;
