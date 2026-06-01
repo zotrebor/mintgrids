@@ -1,12 +1,12 @@
 /* =============================================
-   MINT GRIDS — script.js v2
+   MINT GRIDS — script.js v3
    ============================================= */
 
 // --- NAV: scroll state + burger menu ---
 (function () {
-  const nav     = document.getElementById('nav');
-  const burger  = document.getElementById('burger');
-  const links   = document.getElementById('nav-links');
+  const nav    = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const links  = document.getElementById('nav-links');
 
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -18,7 +18,6 @@
     burger.setAttribute('aria-expanded', open);
   });
 
-  // Cerrar menú al hacer click en un enlace
   links.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       links.classList.remove('open');
@@ -31,7 +30,6 @@
 // --- SCROLL REVEAL ---
 (function () {
   const items = document.querySelectorAll('.scroll-reveal');
-
   if (!items.length) return;
 
   const observer = new IntersectionObserver((entries) => {
@@ -41,18 +39,14 @@
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   items.forEach(el => observer.observe(el));
 })();
 
-// --- HERO REVEAL (sin esperar scroll) ---
+// --- HERO REVEAL ---
 (function () {
   const reveals = document.querySelectorAll('.hero .reveal');
-  // Pequeño delay para que el CSS de transición tenga tiempo de registrarse
   requestAnimationFrame(() => {
     setTimeout(() => {
       reveals.forEach(el => el.classList.add('visible'));
@@ -80,17 +74,75 @@
   images.forEach(img => imgObserver.observe(img));
 })();
 
-// --- MARQUEE: clonar slide para loop continuo ---
+// --- GIG SLIDERS ---
 (function () {
-  const track = document.querySelector('.marquee-track');
-  if (!track) return;
-  const slide = track.querySelector('.marquee-slide');
-  if (!slide) return;
-  const clone = slide.cloneNode(true);
-  track.appendChild(clone);
+  document.querySelectorAll('.gig-slider').forEach(slider => {
+    const track  = slider.querySelector('.gig-slider__track');
+    const imgs   = slider.querySelectorAll('.gig-slider__img');
+    const dotsWrap = slider.querySelector('.gig-slider__dots');
+    const btnPrev  = slider.querySelector('.gig-slider__btn--prev');
+    const btnNext  = slider.querySelector('.gig-slider__btn--next');
+    const total    = imgs.length;
+
+    if (!total) return;
+
+    let current   = 0;
+    let autoTimer = null;
+
+    // Build dots
+    imgs.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'gig-slider__dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsWrap.querySelectorAll('.gig-slider__dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); resetAuto(); });
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); resetAuto(); });
+
+    // Auto-advance every 3.5s
+    function startAuto() {
+      autoTimer = setInterval(next, 3500);
+    }
+    function resetAuto() {
+      clearInterval(autoTimer);
+      startAuto();
+    }
+
+    // Pause on hover
+    slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    slider.addEventListener('mouseleave', startAuto);
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    slider.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        diff > 0 ? next() : prev();
+        resetAuto();
+      }
+    });
+
+    startAuto();
+  });
 })();
 
-// --- PROTECCIÓN CLIC DERECHO EN IMÁGENES ---
+// --- RIGHT CLICK PROTECTION ON IMAGES ---
 document.addEventListener('contextmenu', e => {
   if (e.target.tagName === 'IMG') e.preventDefault();
 });
