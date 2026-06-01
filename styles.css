@@ -835,7 +835,7 @@ em { font-style: italic; color: var(--accent); }
 }
 .contacto__social a {
   font-size: 0.875rem;
-  color: var(--text-3);
+  color: var(--text-2);
   transition: color 0.2s;
 }
 .contacto__social a:hover { color: var(--accent); }
@@ -856,7 +856,7 @@ em { font-style: italic; color: var(--accent); }
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  color: var(--text-3);
+  color: var(--text-2);
 }
 
 /* =============================================
