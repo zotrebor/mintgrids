@@ -805,7 +805,7 @@ em { font-style: italic; color: var(--accent); }
   padding: 140px 24px;
   /*background: var(--bg-2);*/
   border-top: 1px solid var(--border);
-  text-align: center;
+  text-align: left;
 }
 .contacto__inner {
   max-width: 680px;
