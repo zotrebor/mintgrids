@@ -578,7 +578,7 @@ em { font-style: italic; color: var(--accent); }
 .gig-card {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-2);
-  background: rgba(14, 14, 20, 0.55);
+  background: rgba(14, 14, 20, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   overflow: hidden;
@@ -632,7 +632,7 @@ em { font-style: italic; color: var(--accent); }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(12, 12, 15, 0.7);
+  background: rgba(12, 12, 15, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-2);
   color: var(--text);
@@ -796,7 +796,7 @@ em { font-style: italic; color: var(--accent); }
 @media (max-width: 900px) {
   .gigs__grid { grid-template-columns: 1fr; }
 }
- 
+ .gig-card__body
 
 /* =============================================
    CONTACTO
