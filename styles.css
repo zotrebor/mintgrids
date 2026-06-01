@@ -152,7 +152,7 @@ em { font-style: italic; color: var(--accent); }
   background: radial-gradient(circle at top, #1d1f2e, #0b0d12);
   pointer-events: none;
 }
-.hero__grid {
+/*.hero__grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -160,7 +160,8 @@ em { font-style: italic; color: var(--accent); }
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 100%);
-}
+}*/
+
 .hero__glow {
   position: absolute;
   top: -10%;
