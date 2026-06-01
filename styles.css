@@ -63,7 +63,7 @@ em { font-style: italic; color: var(--accent); }
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-  background: rgba(12,12,15,0.4);
+  background: rgba(12,12,15,0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-color: var(--border);
