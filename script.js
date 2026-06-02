@@ -86,6 +86,15 @@
 
     if (!total) return;
 
+    // SI SOLO HAY 1 IMAGEN: Oculta controles y cancela el slider automático
+    if (total === 1) {
+      if (btnPrev) btnPrev.style.display = 'none';
+      if (btnNext) btnNext.style.display = 'none';
+      if (dotsWrap) dotsWrap.style.display = 'none';
+      return; // Detiene la ejecución para este slider específico
+    }
+
+    // Estas variables se declaran una sola vez aquí
     let current   = 0;
     let autoTimer = null;
 
