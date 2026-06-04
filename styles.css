@@ -342,7 +342,8 @@ em { font-style: italic; color: var(--accent); }
    SERVICIOS
    ============================================= */
 .servicios {
-  padding: 120px 0;
+  padding: 140px 24px;
+  border-top: 1px solid var(--border);
   background: var(--bg);
 }
 .servicios__grid {
