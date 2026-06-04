@@ -149,7 +149,7 @@ em { font-style: italic; color: var(--accent); }
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(circle at top, #005c94, #0a1457);
+  background: radial-gradient(circle at top, #004055, #0a1429);
   pointer-events: none;
 }
 /*.hero__grid {
