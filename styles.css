@@ -342,7 +342,7 @@ em { font-style: italic; color: var(--accent); }
    SERVICIOS
    ============================================= */
 .servicios {
-  padding: 120px 24px;
+  padding: 60px 24px;
   border-top: 1px solid var(--border);
   background: var(--bg);
 }
@@ -406,7 +406,8 @@ em { font-style: italic; color: var(--accent); }
    PORTAFOLIO
    ============================================= */
 .portafolio {
-  padding: 120px 0;
+  padding: 60px 24px;
+  border-top: 1px solid var(--border);
   background: var(--bg-2);
 }
 .portafolio__grid {
@@ -500,7 +501,8 @@ em { font-style: italic; color: var(--accent); }
    SOBRE MÍ
    ============================================= */
 .sobre-mi {
-  padding: 120px 0;
+  padding: 60px 24px;
+  border-top: 1px solid var(--border);
   background: var(--bg);
 }
 .sobre-mi__inner {
@@ -569,7 +571,6 @@ em { font-style: italic; color: var(--accent); }
   border-top: 1px solid var(--border);
   position: relative;
   z-index: 1;
-  padding: 120px 0;
 }
  
 .gigs__grid {
