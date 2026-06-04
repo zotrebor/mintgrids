@@ -98,21 +98,31 @@
     let current   = 0;
     let autoTimer = null;
 
-    // Build dots
-    imgs.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'gig-slider__dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Slide ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(dot);
-    });
+    // Build dots (Solo si hay 6 imágenes o menos para no saturar el diseño)
+    const MAX_DOTS = 6;
+    if (total <= MAX_DOTS) {
+      imgs.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'gig-slider__dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+    } else {
+      // Si hay más de 6 imágenes, ocultamos el contenedor de puntos por completo
+      if (dotsWrap) dotsWrap.style.display = 'none';
+    }
 
     function goTo(index) {
       current = (index + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
-      dotsWrap.querySelectorAll('.gig-slider__dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
+      
+      // Solo intenta actualizar los puntos si realmente existen en el DOM
+      if (total <= MAX_DOTS && dotsWrap) {
+        dotsWrap.querySelectorAll('.gig-slider__dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
     }
 
     function next() { goTo(current + 1); }
