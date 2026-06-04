@@ -565,6 +565,8 @@ em { font-style: italic; color: var(--accent); }
    GIGS + PORTFOLIO
    ============================================= */
 .gigs {
+  padding: 120px 24px;
+  border-top: 1px solid var(--border);
   position: relative;
   z-index: 1;
   padding: 120px 0;
