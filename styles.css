@@ -565,7 +565,7 @@ em { font-style: italic; color: var(--accent); }
    GIGS + PORTFOLIO
    ============================================= */
 .gigs {
-  padding: 120px 24px;
+  padding: 60px 24px;
   border-top: 1px solid var(--border);
   position: relative;
   z-index: 1;
@@ -805,7 +805,7 @@ em { font-style: italic; color: var(--accent); }
    CONTACTO
    ============================================= */
 .contacto {
-  padding: 140px 24px;
+  padding: 60px 24px;
   border-top: 1px solid var(--border);
   text-align: center;
 }
