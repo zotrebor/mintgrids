@@ -98,27 +98,19 @@
     let current   = 0;
     let autoTimer = null;
 
-    // Build dots (Solo si hay 6 imágenes o menos para no saturar el diseño)
-    const MAX_DOTS = 6;
-    if (total <= MAX_DOTS) {
-      imgs.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'gig-slider__dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Slide ${i + 1}`);
-        dot.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(dot);
-      });
-    } else {
-      // Si hay más de 6 imágenes, ocultamos el contenedor de puntos por completo
-      if (dotsWrap) dotsWrap.style.display = 'none';
-    }
+    // Build dots (Un solo bloque limpio para todas tus imágenes)
+    imgs.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'gig-slider__dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
 
     function goTo(index) {
       current = (index + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
-      
-      // Solo intenta actualizar los puntos si realmente existen en el DOM
-      if (total <= MAX_DOTS && dotsWrap) {
+      if (dotsWrap) {
         dotsWrap.querySelectorAll('.gig-slider__dot').forEach((d, i) => {
           d.classList.toggle('active', i === current);
         });
@@ -128,8 +120,9 @@
     function next() { goTo(current + 1); }
     function prev() { goTo(current - 1); }
 
-    btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); resetAuto(); });
-    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); resetAuto(); });
+    // Blindaje por si acaso en algún HTML no existen los botones
+    if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); resetAuto(); });
+    if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); resetAuto(); });
 
     // Auto-advance every 3.5s
     function startAuto() {
