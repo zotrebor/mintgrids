@@ -848,7 +848,7 @@ em { font-style: italic; color: var(--accent); }
    FOOTER
    ============================================= */
 .footer {
-  background: var(--bg);
+  background: rgba(13, 13, 37, 0.6);
   border-top: 1px solid var(--border);
   padding: 24px;
 }
