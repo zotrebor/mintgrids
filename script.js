@@ -91,19 +91,18 @@
       if (btnPrev) btnPrev.style.display = 'none';
       if (btnNext) btnNext.style.display = 'none';
       if (dotsWrap) dotsWrap.style.display = 'none';
-      return; // Detiene la ejecución para este slider específico
+      return; 
     }
 
-    // Estas variables se declaran una sola vez aquí
     let current   = 0;
     let autoTimer = null;
 
-    // Build dots (Un solo bloque limpio para todas tus imágenes)
+    // Build dots
     imgs.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'gig-slider__dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', `Slide ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', () => { goTo(i); resetAuto(); });
       dotsWrap.appendChild(dot);
     });
 
@@ -120,24 +119,45 @@
     function next() { goTo(current + 1); }
     function prev() { goTo(current - 1); }
 
-    // Blindaje por si acaso en algún HTML no existen los botones
-    if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); resetAuto(); });
-    if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); resetAuto(); });
+    // Control de clics con reseteo seguro de temporizador
+    if (btnNext) {
+      btnNext.addEventListener('click', (e) => { 
+        e.stopPropagation(); 
+        next(); 
+        resetAuto(); 
+      });
+    }
+    if (btnPrev) {
+      btnPrev.addEventListener('click', (e) => { 
+        e.stopPropagation(); 
+        prev(); 
+        resetAuto(); 
+      });
+    }
 
-    // Auto-advance every 3.5s
+    // Auto-advance con limpieza absoluta de hilos previos
     function startAuto() {
+      if (autoTimer) clearInterval(autoTimer); // Nos aseguramos de que no haya duplicados antes de crear uno nuevo
       autoTimer = setInterval(next, 3500);
     }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
     function resetAuto() {
-      clearInterval(autoTimer);
+      stopAuto();
       startAuto();
     }
 
-    // Pause on hover
-    slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    // Pausa garantizada al entrar al contenedor del slider
+    slider.addEventListener('mouseenter', stopAuto);
     slider.addEventListener('mouseleave', startAuto);
 
-    // Touch/swipe support
+    // Soporte táctil móvil
     let touchStartX = 0;
     slider.addEventListener('touchstart', e => {
       touchStartX = e.changedTouches[0].clientX;
@@ -150,6 +170,7 @@
       }
     });
 
+    // Arranque inicial
     startAuto();
   });
 })();
