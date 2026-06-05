@@ -838,7 +838,7 @@ z-index: 1;
 }
 .contacto__sub {
   font-size: 1rem;
-  color: var(--text-2);
+  color: var(--text);
   margin-bottom: 44px;
   font-weight: 300;
 }
@@ -851,7 +851,7 @@ z-index: 1;
 }
 .contacto__social a {
   font-size: 0.875rem;
-  color: var(--text-2);
+  color: var(--text);
   transition: color 0.2s;
 }
 .contacto__social a:hover { color: var(--accent); }
