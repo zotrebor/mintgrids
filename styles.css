@@ -239,7 +239,7 @@ em { font-style: italic; color: var(--accent); }
 /* =============================================
    BOTONES
    ============================================= */
-   
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -288,7 +288,7 @@ em { font-style: italic; color: var(--accent); }
 }
 
 .btn--outline:hover {
-  border-color: var(--accent);
+  border-color: var(--border-2);
   color: var(--accent);
 }
 
