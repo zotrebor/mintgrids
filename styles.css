@@ -54,6 +54,7 @@ em { font-style: italic; color: var(--accent); }
 /* =============================================
    NAV
    ============================================= */
+   
 .nav {
   position: fixed;
   top: 0; left: 0;
@@ -137,6 +138,7 @@ em { font-style: italic; color: var(--accent); }
 /* =============================================
    HERO
    ============================================= */
+
 .hero {
   position: relative;
   min-height: 100svh;
@@ -300,6 +302,7 @@ em { font-style: italic; color: var(--accent); }
 /* =============================================
    MARQUEE
    ============================================= */
+
 .marquee-section {
   padding: 40px 0;
   border-top: 1px solid var(--border);
