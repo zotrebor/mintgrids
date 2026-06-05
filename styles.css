@@ -860,10 +860,16 @@ z-index: 1;
    FOOTER
    ============================================= */
 .footer {
-  background: rgba(13, 13, 37, 0.6);
+  /* Forzamos el fondo sólido oscuro (tu azul púrpura) para que no se filtre la galería claro */
+  background: #0d0d25; 
   border-top: 1px solid var(--border);
   padding: 24px;
+  
+  /* Sistema de capas para rescatarlo de la superposición */
+  position: relative;
+  z-index: 3; 
 }
+
 .footer__inner {
   max-width: 1160px;
   margin: 0 auto;
