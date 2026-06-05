@@ -320,7 +320,7 @@ em { font-style: italic; color: var(--accent); }
    GIGS + PORTFOLIO — Versión Clara (Galería Real)
    ============================================= */
 .gigs {
-  padding: 100px 24px;
+  padding: 60px 24px;
   /* FORZAMOS EL FONDO CLARO: Cortamos cualquier filtración del Hero */
   background-color: #f6f6f3; 
   border-top: 1px solid rgba(0, 0, 0, 0.05);
