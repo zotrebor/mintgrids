@@ -96,7 +96,7 @@ em { font-style: italic; color: var(--accent); }
 .nav__links a {
   font-size: 0.75rem;
   font-weight: 400;
-  color: var(--text-2);
+  color: var(--text);
   letter-spacing: 0.02em;
   transition: color 0.2s;
 }
