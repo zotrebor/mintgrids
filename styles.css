@@ -317,9 +317,8 @@ em { font-style: italic; color: var(--accent); }
 }
 
 /* =============================================
-   GIGS + PORTFOLIO — Versión Clara Glassmorphic
-   ============================================= */
-   
+   GIGS + PORTFOLIO
+   =============================================*/
 .gigs {
   padding: 80px 24px;
   border-top: 1px solid var(--border);
@@ -333,31 +332,28 @@ em { font-style: italic; color: var(--accent); }
   gap: 24px;
 }
  
-/* ── Card — glassmorphism claro ── */
+/* ── Card — glassmorphism ── */
 .gig-card {
-  position: relative;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-2);
-  /* Cambiado a base clara translúcida */
-  background: rgba(255, 255, 255, 0.45); 
-  /* Subimos el blur para dar más sensación de vidrio pulido */
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  /* Sombra suave de dispersión para despegar el cristal del fondo claro */
-  box-shadow: 
-    0 4px 30px rgba(0, 0, 0, 0.02),
-    0 1px 3px rgba(0, 0, 0, 0.04);
+  background: rgba(14, 14, 20, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
+  /*transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);*/
 }
+/*.gig-card:hover {
+  border-color: rgba(0,255,204,0.25);
+  transform: translateY(-4px);
+}*/
  
-/* crystal highlight — destello superior izquierdo adaptado a luz clara */
+/* crystal highlight — top-left corner */
 .gig-card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: var(--radius-lg);
-  /* Degradado blanco con más opacidad para simular el reflejo del vidrio */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -368,7 +364,7 @@ em { font-style: italic; color: var(--accent); }
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: var(--bg-3); /* Caerá en tu fondo blanco sólido de respaldo */
+  background: var(--bg-3);
 }
  
 .gig-slider__track {
@@ -382,18 +378,22 @@ em { font-style: italic; color: var(--accent); }
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
+  /*transition: transform 0.6s var(--ease);*/
 }
  
-/* prev / next buttons — Adaptados para contraste en fondo claro */
+/*.gig-card:hover .gig-slider__img {
+  transform: scale(1.03);
+}*/
+ 
+/* prev / next buttons */
 .gig-slider__btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  /* Base blanca translúcida con sombra para que destaque sobre tus logos */
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(12, 12, 15, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-2);
-  color: var(--text); /* Usará tu nuevo texto ceniza oscuro */
+  color: var(--text);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -403,21 +403,19 @@ em { font-style: italic; color: var(--accent); }
   justify-content: center;
   font-size: 0.85rem;
   opacity: 1;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: opacity 0.25s, background 0.2s;
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 .gig-slider__btn--prev { left: 12px; }
 .gig-slider__btn--next { right: 12px; }
-
+/*.gig-slider:hover .gig-slider__btn { opacity: 1; }*/
 .gig-slider__btn:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: var(--accent); /* Tu verde menta destacará finamente aquí */
+  background: rgba(0,255,204,0.15);
+  border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 0 4px 12px rgba(0, 255, 204, 0.15);
 }
  
-/* dots — Adaptados a fondo claro */
+/* dots */
 .gig-slider__dots {
   position: absolute;
   bottom: 12px;
@@ -431,17 +429,28 @@ em { font-style: italic; color: var(--accent); }
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  /* Gris oscuro translúcido para que sea visible sobre logos claros */
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255,255,255,0.3);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
   border: none;
   padding: 0;
 }
 .gig-slider__dot.active {
-  background: var(--accent); /* Tu menta corporativo */
+  background: var(--accent);
   transform: scale(1.3);
 }
+ 
+/* accent line on hover — bottom border
+.gig-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.5s var(--ease-out);
+  z-index: 1;
+}
+.gig-card:hover::after { width: 100%; }+/
  
 /* ── Card body ── */
 .gig-card__body {
@@ -510,7 +519,7 @@ em { font-style: italic; color: var(--accent); }
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--accent); /* La flecha menta se verá genial guiando el ojo */
+  color: var(--accent);
   font-size: 0.7rem;
 }
  
@@ -524,7 +533,7 @@ em { font-style: italic; color: var(--accent); }
   color: var(--accent);
   text-decoration: none;
   transition: letter-spacing 0.25s var(--ease), opacity 0.2s;
-  opacity: 0.85; /* Un poco más de opacidad inicial para fondo claro */
+  opacity: 0.75;
   margin-top: auto;
 }
 .gig-card__cta:hover {
@@ -544,7 +553,7 @@ em { font-style: italic; color: var(--accent); }
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .gigs__grid { grid-template-columns: 1fr; }
-}
+} 
 
 /* =============================================
    SECTION HEADERS
