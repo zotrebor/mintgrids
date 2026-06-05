@@ -327,6 +327,30 @@ em { font-style: italic; color: var(--accent); }
   position: relative;
   z-index: 2; /* Nos aseguramos de que tape por completo el fondo fijo anterior */
 }
+
+/* ── CABECERA DE SECCIÓN (Aislada localmente) ── */
+.gigs .section-tag {
+  color: var(--accent); /* Tu verde menta */
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+.gigs .section-title {
+  font-family: var(--serif);
+  color: #111155; /* Tu Navy Blue que rescató el diseño */
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+/* Por si usas la etiqueta <em> para el texto en cursiva */
+.gigs .section-title em {
+  font-style: italic;
+  font-family: var(--serif);
+}
  
 .gigs__grid {
   display: grid;
