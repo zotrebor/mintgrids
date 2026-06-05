@@ -476,7 +476,7 @@ em { font-style: italic; color: var(--accent); }
   font-family: var(--serif);
   font-size: 1.6rem;
   font-weight: 400;
-  color: #1a1a1c; /* FORZADO A NEGRO CENIZA: Contraste total y limpio */
+  color: var(--accent); /* Tu verde menta corporativo */
   line-height: 1.15;
   margin-bottom: 12px;
 }
@@ -518,7 +518,7 @@ em { font-style: italic; color: var(--accent); }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent); /* Tu verde menta corporativo */
+  color: #1a1a1c; /* FORZADO A NEGRO CENIZA: Contraste total y limpio */
   text-decoration: none;
   transition: letter-spacing 0.25s var(--ease), opacity 0.2s;
   opacity: 0.9;
