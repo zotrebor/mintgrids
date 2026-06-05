@@ -330,7 +330,7 @@ em { font-style: italic; color: var(--accent); }
 
 /* ── CABECERA DE SECCIÓN (Aislada localmente) ── */
 .gigs .section-tag {
-  color: #151593; /* Tu Navy Blue que rescató el diseño */
+  color: #0d0db7; /* Tu Blue que rescató el diseño */
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -410,59 +410,66 @@ em { font-style: italic; color: var(--accent); }
  
 /* Controles del Slider: Máximo contraste sobre tus imágenes */
 .gig-slider__btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #1a1a1c; /* Forzamos color oscuro para que sea visible siempre */
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  opacity: 1;
-  transition: all 0.2s ease;
-  z-index: 2;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(12, 12, 15, 0.4);
+backdrop-filter: blur(8px);
+border: 1px solid var(--border-2);
+color: var(--text);
+width: 36px;
+height: 36px;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.85rem;
+opacity: 1;
+transition: opacity 0.25s, background 0.2s;
+z-index: 2;
 }
-.gig-slider__btn--prev { left: 16px; }
-.gig-slider__btn--next { right: 16px; }
-
+.gig-slider__btn--prev { left: 12px; }
+.gig-slider__btn--next { right: 12px; }
+/*.gig-slider:hover .gig-slider__btn { opacity: 1; }*/
 .gig-slider__btn:hover {
-  background: #ffffff;
-  border-color: var(--accent); /* Tu verde menta */
-  color: var(--accent);
-  box-shadow: 0 4px 12px rgba(0, 255, 204, 0.2);
+background: rgba(0,255,204,0.15);
+border-color: var(--accent);
+color: var(--accent);
 }
- 
-/* Puntos indicadores adaptados a la claridad */
+/* dots */
 .gig-slider__dots {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 6px;
-  z-index: 2;
+position: absolute;
+bottom: 12px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 6px;
+z-index: 2;
 }
 .gig-slider__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.25); /* Gris oscuro traslúcido para que se note */
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  border: none;
-  padding: 0;
+width: 5px;
+height: 5px;
+border-radius: 50%;
+background: rgba(255,255,255,0.3);
+cursor: pointer;
+transition: background 0.2s, transform 0.2s;
+border: none;
+padding: 0;
 }
 .gig-slider__dot.active {
-  background: var(--accent); /* Tu verde menta resalta aquí */
-  transform: scale(1.3);
+background: var(--accent);
+transform: scale(1.3);
+}
+/* accent line on hover — bottom border
+.gig-card::after {
+content: '';
+position: absolute;
+bottom: 0; left: 0;
+width: 0; height: 2px;
+background: var(--accent);
+transition: width 0.5s var(--ease-out);
+z-index: 1;
 }
  
 /* ── Card body con textos forzados a tonos oscuros/ceniza ── */
