@@ -330,7 +330,7 @@ em { font-style: italic; color: var(--accent); }
 
 /* ── CABECERA DE SECCIÓN (Aislada localmente) ── */
 .gigs .section-tag {
-  color: var(--accent); /* Tu verde menta */
+  color: #151593; /* Tu Navy Blue que rescató el diseño */
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
