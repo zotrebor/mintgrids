@@ -16,6 +16,7 @@
   --text:      #f0f0f0;
   --text-2:    #8888a0;
   --text-3:    #555568;
+  --text-4:    #0d0d44;
   --serif:     'DM Serif Display', Georgia, serif;
   --sans:      'DM Sans', system-ui, sans-serif;
   --radius:    12px;
@@ -112,7 +113,7 @@ em { font-style: italic; color: var(--accent); }
 .nav__cta:hover {
   background: var(--surface);
   border-color: var(--border-2);
-  color: var(--text) !important;
+  color: var(--text-4) !important;
 }
 .nav__burger {
   display: none;
