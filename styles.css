@@ -330,7 +330,8 @@ em { font-style: italic; color: var(--accent); }
 
 /* ── CABECERA DE SECCIÓN (Aislada localmente) ── */
 .gigs .section-tag {
-  color: #0d0db7; /* Tu Blue que rescató el diseño */
+  color: var(--accent-2);
+  /*color: #0d0db7; /* Tu Blue que rescató el diseño */
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
