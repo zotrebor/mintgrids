@@ -530,7 +530,7 @@ z-index: 1;
 }
 .gig-card__list li {
   font-size: 0.82rem;
-  color: #5c5c61; /* Forzado a gris oscuro para las viñetas */
+  color: var(--accent-2);
   padding-left: 18px;
   position: relative;
   line-height: 1.5;
@@ -539,7 +539,7 @@ z-index: 1;
   content: '→';
   position: absolute;
   left: 0;
-  color: #111155; /* FORZADO A NAVY BLUE: Contraste total y limpio */
+  color: var(--accent-2);
   font-size: 0.75rem;
 }
  
@@ -550,7 +550,7 @@ z-index: 1;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #111155; /* FORZADO A NAVY BLUE: Contraste total y limpio */
+  color: var(--accent-2);
   text-decoration: none;
   transition: letter-spacing 0.25s var(--ease), opacity 0.2s;
   opacity: 0.9;
