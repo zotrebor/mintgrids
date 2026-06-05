@@ -272,6 +272,7 @@ em { font-style: italic; color: var(--accent); }
   background: transparent;
 }
 .btn--ghost:hover { border-color: var(--text-4); background: var(--surface); }
+
 .btn--outline {
   border-color: var(--border-2);
   color: var(--text-4);
