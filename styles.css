@@ -539,7 +539,7 @@ z-index: 1;
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--accent-2);
+  color: #111155; /* FORZADO A NAVY BLUE: Contraste total y limpio */
   font-size: 0.75rem;
 }
  
