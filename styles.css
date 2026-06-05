@@ -509,7 +509,7 @@ z-index: 1;
   font-family: var(--serif);
   font-size: 1.6rem;
   font-weight: 400;
-  color: #111155; /* FORZADO A NAVY BLUE: Contraste total y limpio */
+  color: var(--accent-2);
   line-height: 1.15;
   margin-bottom: 12px;
 }
