@@ -239,6 +239,7 @@ em { font-style: italic; color: var(--accent); }
 /* =============================================
    BOTONES
    ============================================= */
+   
 .btn {
   display: inline-flex;
   align-items: center;
@@ -254,6 +255,7 @@ em { font-style: italic; color: var(--accent); }
   border: 1px solid transparent;
   text-decoration: none;
 }
+
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0) scale(0.98); }
 .btn--primary {
@@ -262,24 +264,38 @@ em { font-style: italic; color: var(--accent); }
   font-weight: 600;
   box-shadow: 0 0 30px rgba(0,255,204,0.2);
 }
+
 .btn--primary:hover {
   background: #1fffd4;
   box-shadow: 0 0 40px rgba(0,255,204,0.35);
 }
+
 .btn--ghost {
   border-color: var(--border-2);
   color: var(--text);
   background: transparent;
 }
-.btn--ghost:hover { border-color: var(--text-4); background: var(--surface); }
+
+.btn--ghost:hover {
+  border-color: var(--text-4);
+  background: var(--surface); 
+}
 
 .btn--outline {
   border-color: var(--border-2);
   color: var(--text-4);
   background: transparent;
 }
-.btn--outline:hover { border-color: var(--accent); color: var(--accent); }
-.btn--large { padding: 16px 40px; font-size: 1rem; }
+
+.btn--outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn--large {
+  padding: 16px 40px;
+  font-size: 1rem;
+}
 
 /* =============================================
    MARQUEE
