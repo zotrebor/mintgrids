@@ -271,7 +271,7 @@ em { font-style: italic; color: var(--accent); }
   color: var(--text);
   background: transparent;
 }
-.btn--ghost:hover { border-color: var(--text-2); background: var(--surface); }
+.btn--ghost:hover { border-color: var(--text-4); background: var(--surface); }
 .btn--outline {
   border-color: var(--border-2);
   color: var(--text-4);
