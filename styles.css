@@ -197,7 +197,7 @@ em { font-style: italic; color: var(--accent); }
 }
 .hero__sub {
   font-size: clamp(1rem, 1.8vw, 1.15rem);
-  color: var(--text-2);
+  color: var(--text);
   line-height: 1.7;
   font-weight: 300;
   margin-bottom: 44px;
@@ -274,7 +274,7 @@ em { font-style: italic; color: var(--accent); }
 .btn--ghost:hover { border-color: var(--text-2); background: var(--surface); }
 .btn--outline {
   border-color: var(--border-2);
-  color: var(--text-2);
+  color: var(--text-4);
   background: transparent;
 }
 .btn--outline:hover { border-color: var(--accent); color: var(--accent); }
