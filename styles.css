@@ -100,7 +100,7 @@ em { font-style: italic; color: var(--accent); }
   letter-spacing: 0.02em;
   transition: color 0.2s;
 }
-.nav__links a:hover { color: var(--text); }
+.nav__links a:hover { color: var(--accent); }
 .nav__cta {
   padding: 8px 20px;
   border: 1px solid var(--accent);
