@@ -550,7 +550,7 @@ z-index: 1;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent-2);
+  color: #111155; /* FORZADO A NAVY BLUE: Contraste total y limpio */
   text-decoration: none;
   transition: letter-spacing 0.25s var(--ease), opacity 0.2s;
   opacity: 0.9;
