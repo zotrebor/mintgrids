@@ -433,31 +433,38 @@ em { font-style: italic; color: var(--accent); }
  
 /* Controles del Slider: Máximo contraste sobre tus imágenes */
 .gig-slider__btn {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-backdrop-filter: blur(8px);
-border: 1px solid var(--border-2);
-color: var(--text);
-width: 36px;
-height: 36px;
-border-radius: 50%;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.85rem;
-opacity: 1;
-transition: opacity 0.25s, background 0.2s;
-z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  /* ELIMINADO: Quitamos el background y el backdrop-filter para que sea 100% transparente */
+  background: transparent; 
+  
+  /* FORZADO A TONOS OSCUROS: Para que resalten sobre concreto/blanco en estado normal */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Borde sutil oscuro */
+  color: #111155; /* Tu Navy Blue para la flecha, combinando con el título principal */
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  opacity: 1;
+  transition: all 0.25s ease; /* Transición más limpia para todos los estados */
+  z-index: 2;
 }
+
 .gig-slider__btn--prev { left: 12px; }
 .gig-slider__btn--next { right: 12px; }
-/*.gig-slider:hover .gig-slider__btn { opacity: 1; }*/
+
+/* Cuando pasas el mouse: se activa tu identidad verde menta */
 .gig-slider__btn:hover {
-background: rgba(0,255,204,0.15);
-border-color: var(--accent);
-color: var(--accent);
+  background: rgba(0, 255, 204, 0.1); /* Un sutil destello menta de fondo */
+  border-color: var(--accent);
+  color: var(--accent);
 }
 /* dots */
 .gig-slider__dots {
