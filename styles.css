@@ -441,8 +441,8 @@ em { font-style: italic; color: var(--accent); }
   background: transparent; 
   
   /* FORZADO A TONOS OSCUROS: Para que resalten sobre concreto/blanco en estado normal */
-  border: 1px solid rgb(255, 255, 255); /* Borde sutil oscuro */
-  color: #ffffff; /* Tu Navy Blue para la flecha, combinando con el título principal */
+  border: 1px solid rgb(255, 255, 255); /* Borde blanco */
+  color: #ffffff; /* La Flecha Blanca */
   
   width: 36px;
   height: 36px;
