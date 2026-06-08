@@ -436,7 +436,7 @@ em { font-style: italic; color: var(--accent); }
 position: absolute;
 top: 50%;
 transform: translateY(-50%);
-background: rgba(12, 12, 15, 0.4);
+background: rgba(101, 117, 117, 0.4);
 backdrop-filter: blur(8px);
 border: 1px solid var(--border-2);
 color: var(--text);
