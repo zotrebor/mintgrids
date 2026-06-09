@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MintGrids — Brand & Web Design Studio</title>
-  <meta name="description" content="MintGrids is a creative studio specializing in branding, web design & illustration.">
+  <title>MintGrids — Brand & Creative Design Studio</title>
+  <meta name="description" content="Independent creative studio specializing in branding, illustration, web design, and motion graphics. Based in Ecuador, working worldwide.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mintgrids.com">
-  <meta property="og:title" content="MintGrids — Brand & Web Design Studio">
-  <meta property="og:description" content="Creative studio specializing in branding, web design & illustration.">
+  <meta property="og:title" content="MintGrids — Brand & Creative Design Studio">
+  <meta property="og:description" content="Branding, illustration, web design & motion graphics. 31 five-star reviews.">
   <meta property="og:url" content="https://mintgrids.com">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://mintgrids.com/images/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MintGrids — Branding & Web Design Studio">
-  <meta name="twitter:description" content="Creative studio specializing in branding, web design & illustration.">
+  <meta name="twitter:title" content="MintGrids — Brand & Creative Design Studio">
+  <meta name="twitter:description" content="Branding, illustration, web design & motion graphics.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ═══ NAV ═══ -->
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a href="#hero" class="nav__logo" aria-label="MintGrids Home">
@@ -45,7 +45,8 @@
       </a>
       <nav class="nav__links" id="nav-links" aria-label="Main navigation">
         <a href="#gigs">Services</a>
-        <a href="#contacto" class="nav__cta">Contact</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact" class="nav__cta">Get a Quote</a>
       </nav>
       <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
@@ -55,143 +56,298 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- ═══ HERO — dark ═══ -->
     <section class="hero" id="hero">
+
+      <!-- Floating SVG icons -->
+      <div class="hero__canvas" id="hero-canvas" aria-hidden="true">
+
+        <!-- Pen tool -->
+        <svg class="ficon ficon--1" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 40L20 28M20 28L28 36L40 8L12 20L20 28Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="28" r="2.5" fill="currentColor"/>
+        </svg>
+
+        <!-- Bezier curve -->
+        <svg class="ficon ficon--2" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="40" r="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="40" cy="40" r="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="14" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="34" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 40 C14 10 34 10 40 40" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+          <line x1="8" y1="40" x2="14" y2="10" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <line x1="40" y1="40" x2="34" y2="10" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+
+        <!-- Grid / layout -->
+        <svg class="ficon ficon--3" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="26" y="6" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="6" y="26" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="26" y="26" width="16" height="7" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="26" y="37" width="16" height="5" rx="2" stroke="currentColor" stroke-width="2"/>
+        </svg>
+
+        <!-- Typography / T -->
+        <svg class="ficon ficon--4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 10H40M24 10V40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M16 40H32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Color swatch -->
+        <svg class="ficon ficon--5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="8" fill="currentColor" opacity="0.9"/>
+          <circle cx="32" cy="16" r="8" fill="currentColor" opacity="0.5"/>
+          <circle cx="24" cy="30" r="8" fill="currentColor" opacity="0.7"/>
+        </svg>
+
+        <!-- Frame / artboard -->
+        <svg class="ficon ficon--6" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="12" width="24" height="24" rx="1" stroke="currentColor" stroke-width="2"/>
+          <line x1="12" y1="6" x2="12" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="6" x2="24" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="6" x2="36" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="24" x2="10" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="36" x2="10" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="38" x2="12" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="38" x2="24" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="38" x2="36" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="38" y1="12" x2="42" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="38" y1="24" x2="42" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="38" y1="36" x2="42" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Star / rating -->
+        <svg class="ficon ficon--7" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 6L28.6 17.4H41L31.2 24.6L34.9 36L24 29.4L13.1 36L16.8 24.6L7 17.4H19.4L24 6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Play / motion -->
+        <svg class="ficon ficon--8" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 17L33 24L20 31V17Z" fill="currentColor" opacity="0.7"/>
+        </svg>
+
+      </div>
+
       <div class="hero__bg" aria-hidden="true">
         <div class="hero__grid"></div>
         <div class="hero__glow"></div>
       </div>
-      <div class="hero__content">
-        <p class="hero__eyebrow reveal">Design · Brand · Web</p>
-        <h1 class="hero__title reveal reveal--delay-1">
-          Creativity<br>
-          <em>with purpose.</em>
+
+      <div class="hero__content" id="hero-content">
+        <p class="hero__eyebrow reveal">Brand · Illustration · Web · Motion</p>
+        <h1 class="hero__title reveal reveal--d1">
+          Design that<br><em>earns attention.</em>
         </h1>
-        <p class="hero__sub reveal reveal--delay-2">
-          Studio specializing in Branding, Web Design,<br class="br-desk">
-          & Illustration.
+        <p class="hero__sub reveal reveal--d2">
+          Independent creative studio. 10+ years turning ideas into<br class="br-desk"> visual systems that work — for brands that want to stand out.
         </p>
-        <div class="hero__actions reveal reveal--delay-3">
+        <div class="hero__actions reveal reveal--d3">
           <a href="#gigs" class="btn btn--primary">See my work</a>
-          <a href="#contacto" class="btn btn--ghost">Get in touch</a>
+          <a href="#contact" class="btn btn--ghost">
+            <span class="btn__stars">★★★★★</span> 31 five-star reviews
+          </a>
         </div>
+      </div>
+
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
       </div>
     </section>
 
-    <!-- GIGS + PORTFOLIO -->
-    <section class="gigs" id="gigs">
+    <!-- ═══ GIGS — light ═══ -->
+    <section class="section section--light" id="gigs">
       <div class="container">
-
         <div class="section-header scroll-reveal">
           <span class="section-tag">Services</span>
-          <h2 class="section-title">What we can<br><em>do for you</em></h2>
+          <h2 class="section-title">What I can<br><em>do for you</em></h2>
         </div>
 
         <div class="gigs__grid">
 
-          <!-- 01 Logo Design -->
-          <article class="gig-card scroll-reveal">
-            <div class="gig-slider" data-folder="logo">
+          <!-- 01 Branding -->
+          <article class="gig-card scroll-reveal" style="--sd:0ms">
+            <div class="gig-slider">
               <div class="gig-slider__track">
-                <img src="images/gigs/logo/american-contractor-logo.webp" alt="MintGrids" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/aquaam-logo.webp" alt="AQUAAM" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/hawk-media-logo.webp" alt="Hawk Media" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/metco-logo.webp" alt="Hawk Media" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/nutrionary-logo.webp" alt="Nutrionary" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/traducela-logo.webp" alt="Nutrionary" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/zeta-logo.webp" alt="Zeta" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/andino-y-andino-logo.webp" alt="Andino & Andino" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/del-reino-logo.webp" alt="Andino & Andino" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/aquaam-logo.webp" alt="AQUAAM brand identity" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/american-contractor-logo.webp" alt="American Contractor logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/hawk-media-logo.webp" alt="Hawk Media logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/metco-logo.webp" alt="METCO logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/nutrionary-logo.webp" alt="Nutrionary logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/traducela-logo.webp" alt="Tradúcela logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/zeta-logo.webp" alt="Zeta logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/andino-y-andino-logo.webp" alt="Andino y Andino logo" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/del-reino-logo.webp" alt="Del Reino logo" class="gig-slider__img" loading="lazy">
               </div>
-              <button class="gig-slider__btn gig-slider__btn--prev" aria-label="Previous">&#8592;</button>
-              <button class="gig-slider__btn gig-slider__btn--next" aria-label="Next">&#8594;</button>
+              <button class="gig-slider__btn gig-slider__btn--prev" aria-label="Previous">‹</button>
+              <button class="gig-slider__btn gig-slider__btn--next" aria-label="Next">›</button>
               <div class="gig-slider__dots"></div>
             </div>
             <div class="gig-card__body">
-              <div class="gig-card__top">
-                <span class="gig-card__number">01</span>
-                <span class="gig-card__tag">Branding</span>
-              </div>
               <h3 class="gig-card__title">Branding</h3>
-              <p class="gig-card__desc">Custom logos and App icons built from scratch. 3 initial concepts, all formats with brand guidelines.</p>
+              <p class="gig-card__desc">Custom logos built from scratch — 3 initial concepts, all formats, brand guidelines included.</p>
               <ul class="gig-card__list">
-                <li>AI, EPS, PNG, JPG, SVG, PDF</li>
+                <li>AI, EPS, SVG, PNG, PDF delivered</li>
                 <li>Color codes, typography, usage guide</li>
                 <li>Full commercial rights</li>
               </ul>
-              <a href="#contacto" class="gig-card__cta">Get a Quote →</a>
+              <a href="#contact" class="gig-card__cta">Get a Quote →</a>
             </div>
           </article>
 
-          <!-- 02 Website & Landing Page -->
-          <article class="gig-card scroll-reveal">
-            <div class="gig-slider" data-folder="web">
+          <!-- 02 Illustration -->
+          <article class="gig-card scroll-reveal" style="--sd:100ms">
+            <div class="gig-slider">
               <div class="gig-slider__track">
-                <img src="images/gigs/logo/mintgrids-logo.webp" alt="MintGrids" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/the-monkey-logo.webp" alt="The Monkey illustration" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/glide-logo.webp" alt="Glide illustration" class="gig-slider__img" loading="lazy">
+                <img src="images/gigs/logo/liberty-logo.webp" alt="Liberty illustration" class="gig-slider__img" loading="lazy">
               </div>
-              <button class="gig-slider__btn gig-slider__btn--prev" aria-label="Previous">&#8592;</button>
-              <button class="gig-slider__btn gig-slider__btn--next" aria-label="Next">&#8594;</button>
+              <button class="gig-slider__btn gig-slider__btn--prev" aria-label="Previous">‹</button>
+              <button class="gig-slider__btn gig-slider__btn--next" aria-label="Next">›</button>
               <div class="gig-slider__dots"></div>
             </div>
             <div class="gig-card__body">
-              <div class="gig-card__top">
-                <span class="gig-card__number">02</span>
-                <span class="gig-card__tag">Web · SEO</span>
-              </div>
-              <h3 class="gig-card__title">Web Design</h3>
-              <p class="gig-card__desc">Custom design and development. Fast, SEO-optimized, fully responsive with smooth CSS animations. Complete source code, ready to deploy.</p>
-              <ul class="gig-card__list">
-                <li>HTML5, CSS3, vanilla JavaScript</li>
-                <li>SEO best practices from day one</li>
-                <li>30 days post-launch support</li>
-              </ul>
-              <a href="#contacto" class="gig-card__cta">Get a Quote →</a>
-            </div>
-          </article>
-          
-          <!-- 03 Vector Illustration -->
-          <article class="gig-card scroll-reveal">
-            <div class="gig-slider" data-folder="illustration">
-              <div class="gig-slider__track">
-                <img src="images/gigs/logo/the-monkey-logo.webp" alt="The Monkey" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/glide-logo.webp" alt="Glide" class="gig-slider__img" loading="lazy">
-                <img src="images/gigs/logo/liberty-logo.webp" alt="Liberty" class="gig-slider__img" loading="lazy">
-              </div>
-              <button class="gig-slider__btn gig-slider__btn--prev" aria-label="Previous">&#8592;</button>
-              <button class="gig-slider__btn gig-slider__btn--next" aria-label="Next">&#8594;</button>
-              <div class="gig-slider__dots"></div>
-            </div>
-            <div class="gig-card__body">
-              <div class="gig-card__top">
-                <span class="gig-card__number">03</span>
-                <span class="gig-card__tag">Illustration</span>
-              </div>
               <h3 class="gig-card__title">Illustration</h3>
-              <p class="gig-card__desc">Original vector art from scratch. Characters, mascots, infographics, merchandise.</p>
+              <p class="gig-card__desc">Original vector art from scratch — characters, mascots, editorial, merchandise, book illustration.</p>
               <ul class="gig-card__list">
                 <li>AI, EPS, SVG, PNG, JPG delivered</li>
                 <li>Unlimited revisions during design phase</li>
                 <li>Full commercial rights</li>
               </ul>
-              <a href="#contacto" class="gig-card__cta">Get a Quote →</a>
+              <a href="#contact" class="gig-card__cta">Get a Quote →</a>
             </div>
           </article>
 
-          
+          <!-- 03 Web Design -->
+          <article class="gig-card scroll-reveal" style="--sd:200ms">
+            <div class="gig-slider">
+              <div class="gig-slider__track">
+                <img src="images/gigs/logo/mintgrids-logo.webp" alt="MintGrids web design" class="gig-slider__img" loading="lazy">
+              </div>
+              <button class="gig-slider__btn gig-slider__btn--prev" aria-label="Previous">‹</button>
+              <button class="gig-slider__btn gig-slider__btn--next" aria-label="Next">›</button>
+              <div class="gig-slider__dots"></div>
+            </div>
+            <div class="gig-card__body">
+              <h3 class="gig-card__title">Web Design</h3>
+              <p class="gig-card__desc">Custom design & development. Fast, SEO-optimized, fully responsive with smooth animations. Source code included.</p>
+              <ul class="gig-card__list">
+                <li>HTML5, CSS3, vanilla JavaScript</li>
+                <li>SEO best practices from day one</li>
+                <li>30 days post-launch support</li>
+              </ul>
+              <a href="#contact" class="gig-card__cta">Get a Quote →</a>
+            </div>
+          </article>
 
         </div>
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section class="contacto" id="contacto">
-      <div class="contacto__inner scroll-reveal">
-        <p class="section-tag">Contact</p>
-        <h2 class="contacto__title">Do you have<br><em>a project in mind?</em></h2>
-        <p class="contacto__sub">We'd love to hear about it!</p>
-        <a href="mailto:hello@mintgrids.com" class="btn btn--primary btn--large">hello@mintgrids.com</a>
-        <div class="contacto__social">
-          <a href="https://instagram.com/mintgrids" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+    <!-- ═══ REVIEWS — dark ═══ -->
+    <section class="section section--dark" id="reviews">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">Client Reviews</span>
+          <h2 class="section-title section-title--light">Trusted by<br><em>31 happy clients.</em></h2>
+        </div>
+
+        <div class="reviews__slider scroll-reveal" id="reviews-slider">
+          <div class="reviews__track" id="reviews-track">
+
+            <div class="review-card">
+              <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+              <blockquote class="review-card__text">"Excellent designer and highly communicative. Creative and responsive. Definitely would work with him again."</blockquote>
+              <div class="review-card__author">
+                <span class="review-card__flag" aria-label="United States">🇺🇸</span>
+                <div>
+                  <strong class="review-card__name">Benjamin M.</strong>
+                  <span class="review-card__project">Custom Hoodie Design</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+              <blockquote class="review-card__text">"Super efficient with all the changes I've requested. I would 100% re-hire him or recommend him."</blockquote>
+              <div class="review-card__author">
+                <span class="review-card__flag" aria-label="Portugal">🇵🇹</span>
+                <div>
+                  <strong class="review-card__name">Maximiliano R.</strong>
+                  <span class="review-card__project">Logo for Knit Startup</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+              <blockquote class="review-card__text">"Rápido y captó todo lo que quería a la primera."</blockquote>
+              <div class="review-card__author">
+                <span class="review-card__flag" aria-label="Spain">🇪🇸</span>
+                <div>
+                  <strong class="review-card__name">Mario O.</strong>
+                  <span class="review-card__project">Logo & Corporate Manual</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+              <blockquote class="review-card__text">"Great job designing a new shirt and image for our restaurant."</blockquote>
+              <div class="review-card__author">
+                <span class="review-card__flag" aria-label="United States">🇺🇸</span>
+                <div>
+                  <strong class="review-card__name">Matthew R.</strong>
+                  <span class="review-card__project">T-Shirt Design</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+              <blockquote class="review-card__text">"Easy and fast. Exactly what I needed."</blockquote>
+              <div class="review-card__author">
+                <span class="review-card__flag" aria-label="United States">🇺🇸</span>
+                <div>
+                  <strong class="review-card__name">influence33</strong>
+                  <span class="review-card__project">Logo Design</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="reviews__controls">
+            <button class="reviews__btn reviews__btn--prev" id="rev-prev" aria-label="Previous review">‹</button>
+            <div class="reviews__dots" id="rev-dots"></div>
+            <button class="reviews__btn reviews__btn--next" id="rev-next" aria-label="Next review">›</button>
+          </div>
+        </div>
+
+        <p class="reviews__source scroll-reveal">
+          <a href="https://www.freelancer.com/u/robertzapata" target="_blank" rel="noopener noreferrer">View all 31 reviews on Freelancer.com →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT — light ═══ -->
+    <section class="section section--light" id="contact">
+      <div class="container">
+        <div class="contact__glass scroll-reveal">
+          <p class="section-tag">Let's work together</p>
+          <h2 class="section-title">Got a project<br><em>in mind?</em></h2>
+          <p class="contact__sub">Tell me what you're building. I reply within 24 hours.</p>
+          <a href="mailto:hello@mintgrids.com?subject=Project%20Inquiry" class="btn btn--primary btn--large">hello@mintgrids.com</a>
+          <div class="contact__social">
+            <a href="https://instagram.com/mintgrids" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.behance.net/robertzdraws" target="_blank" rel="noopener noreferrer">Behance</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.freelancer.com/u/robertzapata" target="_blank" rel="noopener noreferrer">Freelancer</a>
+          </div>
         </div>
       </div>
     </section>
@@ -201,7 +357,7 @@
   <footer class="footer">
     <div class="footer__inner">
       <span>© 2026 Mint Grids</span>
-      <span>Developed by Mint Grids</span>
+      <span>Designed & built by Mint Grids</span>
     </div>
   </footer>
 
