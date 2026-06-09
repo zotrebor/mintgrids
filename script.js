@@ -184,12 +184,11 @@ document.addEventListener('contextmenu', e => {
 
 // --- PORTAFOLIO V.2 ---
 
-// 1. Datos temporales de los proyectos (Fácil de actualizar luego)
 const projectsData = {
-  "1": { title: "Proyecto Aquaam 1", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin de mi de." },
-  "2": { title: "Proyecto Aquaam 2", desc: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium." },
-  "3": { title: "Proyecto Aquaam 3", desc: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis." },
-  "4": { title: "Proyecto Aquaam 4", desc: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis." }
+  "1": { title: "Aquaam Project I", desc: "A comprehensive case study showcasing responsive interface layouts." },
+  "2": { title: "Aquaam Project II", desc: "Exploring the balance between aesthetic minimalism and high-performance." },
+  "3": { title: "Aquaam Project III", desc: "Custom vector assets, tailored user flows, and brand identity." },
+  "4": { title: "Aquaam Project IV", desc: "Optimized multi-column interactive grids and fluid layouts." }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -201,15 +200,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
 
-  let autoPlayInterval;
-  let direction = 1; // 1 = Derecha, -1 = Izquierda
+  let animationFrameId;
+  let scrollSpeed = 1; // Velocidad del deslizamiento (1 pixel por cuadro). Súbelo a 1.5 si lo quieres más rápido.
+  let direction = 1;   // 1 = Derecha, -1 = Izquierda
   let isPaused = false;
 
-  // --- DETECCIÓN DE CARD CENTRAL (Intersection Observer) ---
+  // --- DETECCIÓN DE CARD CENTRAL ---
   const observerOptions = {
     root: slider,
-    rootMargin: "0px -40% 0px -40%", // Ajusta la franja central de detección
-    threshold: 0.5
+    rootMargin: "0px -45% 0px -45%", // Margen estricto para detectar el centro real
+    threshold: 0.1
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -223,58 +223,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach(card => observer.observe(card));
 
-  // --- LÓGICA DE MOVIMIENTO AUTOMÁTICO E INTELIGENTE ---
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      if (isPaused) return;
-
+  // --- BUCLE DE ANIMACIÓN CONTINUA (Sin Saltos) ---
+  function updateScroll() {
+    if (!isPaused) {
       const maxScroll = slider.scrollWidth - slider.clientWidth;
-      
-      // Control de rebote al llegar a los extremos
-      if (slider.scrollLeft >= maxScroll - 5 && direction === 1) {
-        direction = -1; // Cambia trayectoria a la izquierda
-      } else if (slider.scrollLeft <= 5 && direction === -1) {
-        direction = 1;  // Cambia trayectoria a la derecha
+
+      // Detectar extremos para cambiar de trayectoria de forma fluida
+      if (slider.scrollLeft >= maxScroll - 2 && direction === 1) {
+        direction = -1;
+      } else if (slider.scrollLeft <= 2 && direction === -1) {
+        direction = 1;
       }
 
-      // Desplazamiento equivalente a una card aproximada
-      const shift = (slider.clientWidth * 0.4) * direction; 
-      slider.scrollBy({ left: shift, behavior: "smooth" });
+      // Avanza pixel a pixel de forma milimétrica
+      slider.scrollLeft += scrollSpeed * direction;
+    }
+    // Ejecuta en el próximo refresco de pantalla (60fps/120fps)
+    animationFrameId = requestAnimationFrame(updateScroll);
+  }
 
-    }, 2500); // Velocidad/Pausa entre movimientos (2.5 segundos)
+  function startAutoPlay() {
+    if (!animationFrameId) {
+      animationFrameId = requestAnimationFrame(updateScroll);
+    }
   }
 
   function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
   }
 
-  // Eventos para pausar con Hover (Desktop) y Touch (Móvil)
+  // --- CONTROLES DE PAUSA (Hover y Touch) ---
   slider.addEventListener("mouseenter", () => isPaused = true);
   slider.addEventListener("mouseleave", () => isPaused = false);
+  
   slider.addEventListener("touchstart", () => isPaused = true, {passive: true});
   slider.addEventListener("touchend", () => {
-    // Pequeño delay tras soltar el dedo para reanudar suavemente
+    // Al soltar el dedo en móvil, espera 1.5s antes de reanudar el auto-desplazamiento
     setTimeout(() => { isPaused = false; }, 1500);
   });
 
-  // --- BOTONES DE NAVEGACIÓN (FLECHAS) ---
+  // --- FLECHAS DE NAVEGACIÓN ---
   nextBtn.addEventListener("click", () => {
     direction = 1;
-    const shift = slider.clientWidth * 0.4;
-    slider.scrollBy({ left: shift, behavior: "smooth" });
+    slider.scrollBy({ left: 300, behavior: "smooth" });
   });
 
   prevBtn.addEventListener("click", () => {
     direction = -1;
-    const shift = slider.clientWidth * 0.4;
-    slider.scrollBy({ left: -shift, behavior: "smooth" });
+    slider.scrollBy({ left: -300, behavior: "smooth" });
   });
 
-  // --- APERTURA DEL MODAL (Solo si es la Card Central Activa) ---
+  // --- APERTURA DEL MODAL ---
   cards.forEach(card => {
     card.addEventListener("click", () => {
       if (!card.classList.contains("is-active")) {
-        // Si clickeas una lateral, hace scroll hacia ella en lugar de abrir el modal
         card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         return;
       }
@@ -282,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const projectId = card.getAttribute("data-project");
       const data = projectsData[projectId];
 
-      // Inyectamos dinámicamente la información
       document.getElementById("modalHero").src = `images/portfolio/aquaam-cover.webp`;
       document.getElementById("modalTitle").innerText = data.title;
       document.getElementById("modalDesc").innerText = data.desc;
@@ -293,19 +295,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("modalImg04").src = `images/portfolio/aquaam-04.webp`;
       document.getElementById("modalImg05").src = `images/portfolio/aquaam-05.webp`;
 
-      // Abrimos el modal de forma nativa e interrumpimos el autoplay
       stopAutoPlay();
       modal.showModal();
     });
   });
 
-  // Cerrar Modal
   closeModal.addEventListener("click", () => {
     modal.close();
     startAutoPlay();
   });
 
-  // Cerrar haciendo click en el backdrop oscuro
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.close();
@@ -313,6 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Iniciar el ciclo al cargar la web
+  // Arrancar el slider continuo
   startAutoPlay();
 });
