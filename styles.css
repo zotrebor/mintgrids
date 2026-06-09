@@ -776,6 +776,199 @@ z-index: 1;
 }
 
 /* =============================================
+    PORTAFOLIO v.2
+    ============================================ */
+
+    /* --- Estilos de la Sección y Contenedor --- */
+.portfolio-section {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* --- El Slider (Scroll Snap Nativo) --- */
+.slider-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 40px 0; /* Espacio para el reescalado */
+  width: 100%;
+  gap: 20px;
+  scrollbar-width: none; /* Oculta scroll en Firefox */
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Oculta scroll en Chrome/Safari */
+}
+
+/* --- Las Tarjetas (Cards) --- */
+.slide-card {
+  flex: 0 0 70%; /* En móviles ocupa el 70% del ancho */
+  scroll-snap-align: center;
+  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+  opacity: 0.4;
+  filter: grayscale(80%);
+  transform: scale(0.9);
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+}
+
+.slide-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  pointer-events: none; /* Evita conflicto de arrastre de imagen */
+}
+
+/* Estado Activo (Detectado por JS) */
+.slide-card.is-active {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+
+/* --- Flechas de Navegación (Desktop) --- */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: none; /* Se activan en pantallas grandes */
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover { background: rgba(0, 0, 0, 0.8); }
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* --- Responsive Desktop para el Slider --- */
+@media (min-width: 768px) {
+  .slide-card {
+    flex: 0 0 35%; /* En desktop se ven más tarjetas simultáneas */
+  }
+  .nav-btn {
+    display: flex;
+  }
+}
+
+/* --- Estilos del Modal Nativo <dialog> --- */
+.portfolio-modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.portfolio-modal::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: #111; /* Cambia al color de tu preferencia, soporta transparencias rgba */
+  color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 20px 40px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .portfolio-modal {
+    width: 90%;
+    max-width: 900px;
+    height: auto;
+    max-height: 85vh;
+  }
+  .modal-content {
+    min-height: auto;
+    border-radius: 16px;
+    padding: 40px;
+  }
+}
+
+/* Botón de cerrar */
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* --- Estructura interna del Modal (Grids) --- */
+.img-responsive {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+/* 1era Sección */
+.modal-sec-hero { margin-bottom: 30px; }
+.modal-sec-hero img { aspect-ratio: 4 / 3; width: 100%; }
+
+/* 2da Sección */
+.modal-sec-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  .modal-sec-info { grid-template-columns: 1fr 2fr; }
+}
+
+/* 3ra Sección (3 columnas) */
+.modal-sec-triple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.modal-sec-triple img { aspect-ratio: 1 / 1; }
+
+/* 4ta Sección (2 columnas) */
+.modal-sec-double {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.modal-sec-double img { aspect-ratio: 1 / 1; }
+
+/* =============================================
    SOBRE MÍ
    ============================================= */
 .sobre-mi {
