@@ -779,6 +779,7 @@ z-index: 1;
     PORTAFOLIO v.2
     ============================================ */
 
+
  /* ═══════════════════════════════════════════
    MINT GRIDS — portfolio.css
    Focus-center slider + project modal
@@ -795,6 +796,7 @@ z-index: 1;
 .pf__header {
   margin-bottom: 52px;
 }
+
 
 /* ─── SLIDER WRAPPER ─── */
 .pf__slider-wrap {
