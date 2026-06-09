@@ -962,38 +962,43 @@ z-index: 1;
   .footer__inner { flex-direction: column; gap: 8px; text-align: center; }
   .br-desk { display: none; }
 
-  /* ── Ajustes de Gigs para Tablets/Móviles ── */
+  /* ── Ajustes de Gigs para Tablets/Móviles (Corregido) ── */
   .gigs {
-    padding: 60px 16px; /* Menos espacio muerto a los lados */
+    padding: 50px 16px; /* Reducimos el aire arriba y abajo */
   }
   .gigs__grid { 
-    grid-template-columns: 1fr; /* Una sola columna para que las cards respiren */
-    gap: 24px; 
+    grid-template-columns: 1fr; 
+    gap: 32px; /* Más separación entre tarjetas para que respiren */
   }
+  
+  /* CABECERA: Título más grande, compacto y sin gaps exagerados */
   .gigs .section-title {
-    font-size: 2.6rem; /* Reducción intermedia del título Navy Blue */
-    line-height: 1.15;
-    margin-bottom: 24px;
+    font-size: 2.8rem; /* Subimos el tamaño para que tenga impacto */
+    line-height: 1.05; /* Pegamos las líneas para eliminar el gran gap */
+    margin-top: 6px;
+    margin-bottom: 24px; /* Reducimos la distancia con las tarjetas */
   }
+  
+  /* TARJETAS: Textos más grandes y legibles en móviles */
   .gig-card__body {
-    padding: 24px; /* Reducimos el colchón interno de la tarjeta */
+    padding: 24px 20px; 
   }
   .gig-card__title {
-    font-size: 1.35rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem; /* Título del proyecto más grande */
+    margin-bottom: 6px;
   }
   .gig-card__desc {
-    font-size: 0.85rem;
-    margin-bottom: 14px;
+    font-size: 0.95rem; /* Subimos el tamaño de la descripción para lectura cómoda */
+    margin-bottom: 16px;
+    line-height: 1.5;
   }
-  .gig-slider__btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
+  .gig-card__list li {
+    font-size: 0.88rem; /* Subimos el tamaño de los ítems de la lista */
+    gap: 4px;
   }
-  .gig-slider__btn--prev { left: 8px; }
-  .gig-slider__btn--next { right: 8px; }
-}
+  .gig-card__cta {
+    font-size: 0.85rem; /* Un llamado a la acción más claro para el dedo */
+  }
 
 @media (max-width: 480px) {
   .hero__title { font-size: 3rem; }
