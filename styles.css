@@ -779,6 +779,42 @@ z-index: 1;
     PORTAFOLIO v.2
     ============================================ */
 
+    .carrusel-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.carrusel-contenedor::-webkit-scrollbar {
+  display: none;
+}
+
+.carrusel-elementos {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.carrusel-elementos img {
+  flex-shrink: 0;
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.carrusel-elementos img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .carrusel-elementos {
+    justify-content: flex-start;
+  }
+}
 
  /* ═══════════════════════════════════════════
    MINT GRIDS — portfolio.css
