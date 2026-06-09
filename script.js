@@ -184,134 +184,208 @@ document.addEventListener('contextmenu', e => {
 
 // --- PORTAFOLIO V.2 ---
 
-const projectsData = {
-  "1": { title: "Aquaam Project I", desc: "A comprehensive case study showcasing responsive interface layouts." },
-  "2": { title: "Aquaam Project II", desc: "Exploring the balance between aesthetic minimalism and high-performance." },
-  "3": { title: "Aquaam Project III", desc: "Custom vector assets, tailored user flows, and brand identity." },
-  "4": { title: "Aquaam Project IV", desc: "Optimized multi-column interactive grids and fluid layouts." }
-};
+/* ═══════════════════════════════════════════
+   MINT GRIDS — portfolio.js
+   Focus-center slider + project modal
+   ═══════════════════════════════════════════ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.getElementById("portfolioSlider");
-  const cards = document.querySelectorAll(".slide-card");
-  const modal = document.getElementById("projectModal");
-  const closeModal = document.getElementById("closeModal");
-  
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
+'use strict';
 
-  let animationFrameId;
-  let scrollSpeed = 1; // Velocidad del deslizamiento (1 pixel por cuadro). Súbelo a 1.5 si lo quieres más rápido.
-  let direction = 1;   // 1 = Derecha, -1 = Izquierda
-  let isPaused = false;
+(function () {
 
-  // --- DETECCIÓN DE CARD CENTRAL ---
-  const observerOptions = {
-    root: slider,
-    rootMargin: "0px -45% 0px -45%", // Margen estricto para detectar el centro real
-    threshold: 0.1
-  };
+  /* ─── ELEMENTS ─── */
+  const slider   = document.getElementById('pf-slider');
+  const dotsWrap = document.getElementById('pf-dots');
+  const btnPrev  = document.getElementById('pf-prev');
+  const btnNext  = document.getElementById('pf-next');
+  const modal    = document.getElementById('pf-modal');
+  const modalClose = document.getElementById('pf-modal-close');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        cards.forEach(c => c.classList.remove("is-active"));
-        entry.target.classList.add("is-active");
-      }
+  if (!slider || !modal) return;
+
+  const cards = Array.from(slider.querySelectorAll('.pf__card'));
+  const total  = cards.length;
+  if (!total) return;
+
+  let current   = 0;
+  let isScrolling = false;
+
+  /* ─── BUILD DOTS ─── */
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className   = 'pf__dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Project ${i + 1}`);
+    dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function getDots() { return Array.from(dotsWrap.querySelectorAll('.pf__dot')); }
+
+  /* ─── ACTIVATE CARD ─── */
+  function activate(index) {
+    cards.forEach((c, i) => {
+      c.classList.toggle('is-active', i === index);
+      c.setAttribute('aria-selected', i === index ? 'true' : 'false');
     });
-  }, observerOptions);
-
-  cards.forEach(card => observer.observe(card));
-
-  // --- BUCLE DE ANIMACIÓN CONTINUA (Sin Saltos) ---
-  function updateScroll() {
-    if (!isPaused) {
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-      // Detectar extremos para cambiar de trayectoria de forma fluida
-      if (slider.scrollLeft >= maxScroll - 2 && direction === 1) {
-        direction = -1;
-      } else if (slider.scrollLeft <= 2 && direction === -1) {
-        direction = 1;
-      }
-
-      // Avanza pixel a pixel de forma milimétrica
-      slider.scrollLeft += scrollSpeed * direction;
-    }
-    // Ejecuta en el próximo refresco de pantalla (60fps/120fps)
-    animationFrameId = requestAnimationFrame(updateScroll);
-  }
-
-  function startAutoPlay() {
-    if (!animationFrameId) {
-      animationFrameId = requestAnimationFrame(updateScroll);
-    }
-  }
-
-  function stopAutoPlay() {
-    cancelAnimationFrame(animationFrameId);
-    animationFrameId = null;
-  }
-
-  // --- CONTROLES DE PAUSA (Hover y Touch) ---
-  slider.addEventListener("mouseenter", () => isPaused = true);
-  slider.addEventListener("mouseleave", () => isPaused = false);
-  
-  slider.addEventListener("touchstart", () => isPaused = true, {passive: true});
-  slider.addEventListener("touchend", () => {
-    // Al soltar el dedo en móvil, espera 1.5s antes de reanudar el auto-desplazamiento
-    setTimeout(() => { isPaused = false; }, 1500);
-  });
-
-  // --- FLECHAS DE NAVEGACIÓN ---
-  nextBtn.addEventListener("click", () => {
-    direction = 1;
-    slider.scrollBy({ left: 300, behavior: "smooth" });
-  });
-
-  prevBtn.addEventListener("click", () => {
-    direction = -1;
-    slider.scrollBy({ left: -300, behavior: "smooth" });
-  });
-
-  // --- APERTURA DEL MODAL ---
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      if (!card.classList.contains("is-active")) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        return;
-      }
-
-      const projectId = card.getAttribute("data-project");
-      const data = projectsData[projectId];
-
-      document.getElementById("modalHero").src = `images/portfolio/aquaam-cover.webp`;
-      document.getElementById("modalTitle").innerText = data.title;
-      document.getElementById("modalDesc").innerText = data.desc;
-      
-      document.getElementById("modalImg01").src = `images/portfolio/aquaam-01.webp`;
-      document.getElementById("modalImg02").src = `images/portfolio/aquaam-02.webp`;
-      document.getElementById("modalImg03").src = `images/portfolio/aquaam-03.webp`;
-      document.getElementById("modalImg04").src = `images/portfolio/aquaam-04.webp`;
-      document.getElementById("modalImg05").src = `images/portfolio/aquaam-05.webp`;
-
-      stopAutoPlay();
-      modal.showModal();
+    getDots().forEach((d, i) => {
+      d.classList.toggle('is-active', i === index);
+      d.setAttribute('aria-selected', i === index ? 'true' : 'false');
     });
+    current = index;
+  }
+
+  /* ─── SCROLL TO CARD ─── */
+  function goTo(index) {
+    const clamped = Math.max(0, Math.min(index, total - 1));
+    const card    = cards[clamped];
+    const sliderCenter = slider.offsetWidth / 2;
+    const cardCenter   = card.offsetLeft + card.offsetWidth / 2;
+
+    slider.scrollTo({
+      left: cardCenter - sliderCenter,
+      behavior: 'smooth'
+    });
+
+    activate(clamped);
+  }
+
+  /* ─── DETECT CENTER ON SCROLL ─── */
+  function findCenter() {
+    const sliderRect   = slider.getBoundingClientRect();
+    const sliderCenter = sliderRect.left + sliderRect.width / 2;
+    let closest = 0;
+    let minDist = Infinity;
+
+    cards.forEach((card, i) => {
+      const rect   = card.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      const dist   = Math.abs(center - sliderCenter);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+
+    if (closest !== current) activate(closest);
+  }
+
+  let scrollTimer = null;
+  slider.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(findCenter, 60);
+  }, { passive: true });
+
+  /* ─── ARROW BUTTONS ─── */
+  btnPrev && btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext && btnNext.addEventListener('click', () => goTo(current + 1));
+
+  /* ─── KEYBOARD ─── */
+  slider.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openModal(cards[current]);
+    }
   });
 
-  closeModal.addEventListener("click", () => {
+  /* ─── MOUSE DRAG (desktop) ─── */
+  let dragStartX  = 0;
+  let dragScrollL = 0;
+  let isDragging  = false;
+
+  slider.addEventListener('mousedown', e => {
+    isDragging  = true;
+    dragStartX  = e.pageX - slider.offsetLeft;
+    dragScrollL = slider.scrollLeft;
+    slider.classList.add('is-dragging');
+  });
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    slider.classList.remove('is-dragging');
+    findCenter();
+  });
+  slider.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x    = e.pageX - slider.offsetLeft;
+    const walk = (x - dragStartX) * 1.2;
+    slider.scrollLeft = dragScrollL - walk;
+  });
+  // Prevent accidental click after drag
+  slider.addEventListener('click', e => {
+    if (Math.abs(slider.scrollLeft - dragScrollL) > 4) e.stopPropagation();
+  }, true);
+
+  /* ─── TOUCH SWIPE (snap handles it, but we help with snap-to-center) ─── */
+  let touchStartX = 0;
+  slider.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 30) {
+      goTo(current + (diff > 0 ? 1 : -1));
+    }
+  });
+
+  /* ─── OPEN MODAL ─── */
+  function openModal(card) {
+    // Populate fields from data attributes
+    document.getElementById('pf-modal-cover').src = card.dataset.cover || '';
+    document.getElementById('pf-modal-cover').alt = card.dataset.title || '';
+    document.getElementById('pf-modal-title').textContent = card.dataset.title || '';
+    document.getElementById('pf-modal-desc').textContent  = card.dataset.desc  || '';
+    document.getElementById('pf-modal-sm1').src  = card.dataset.sm1 || '';
+    document.getElementById('pf-modal-sm2').src  = card.dataset.sm2 || '';
+    document.getElementById('pf-modal-sm3').src  = card.dataset.sm3 || '';
+    document.getElementById('pf-modal-sq1').src  = card.dataset.sq1 || '';
+    document.getElementById('pf-modal-sq2').src  = card.dataset.sq2 || '';
+
+    modal.showModal();
+    document.body.style.overflow = 'hidden';
+
+    // Focus close button
+    setTimeout(() => modalClose.focus(), 50);
+  }
+
+  function closeModal() {
     modal.close();
-    startAutoPlay();
+    document.body.style.overflow = '';
+    // Return focus to the card that opened it
+    cards[current] && cards[current].focus();
+  }
+
+  /* ─── CARD CLICK → only if it IS the active card ─── */
+  cards.forEach((card, i) => {
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('click', () => {
+      if (i === current) {
+        openModal(card);
+      } else {
+        goTo(i);
+      }
+    });
   });
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.close();
-      startAutoPlay();
-    }
+  /* ─── CLOSE MODAL ─── */
+  modalClose.addEventListener('click', closeModal);
+
+  // Click outside the inner panel
+  modal.addEventListener('click', e => {
+    const inner = modal.querySelector('.pf-modal__inner');
+    if (!inner.contains(e.target)) closeModal();
   });
 
-  // Arrancar el slider continuo
-  startAutoPlay();
-});
+  // ESC key (native <dialog> handles it, but we clean up body overflow)
+  modal.addEventListener('cancel', () => {
+    document.body.style.overflow = '';
+  });
+
+  /* ─── INIT: activate first card ─── */
+  // Wait one frame so layout is complete before scrolling
+  requestAnimationFrame(() => {
+    goTo(0);
+  });
+
+})();

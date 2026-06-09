@@ -78,82 +78,217 @@
 
     <!-- PORTAFOLIO-->
 
-    <section class="portfolio-section">
-  
-  <div class="slider-wrapper">
-    <button class="nav-btn prev-btn" aria-label="Previous">&#10094;</button>
-    
-    <div class="slider-container" id="portfolioSlider">
-      <div class="slide-card" data-project="1">
-        <img src="images/portfolio/aquaam-thumb.webp" alt="AQUAAM">
-      </div>
-      <div class="slide-card" data-project="2">
-        <img src="images/portfolio/american-contractor-thumb.webp" alt="American Contractor">
-      </div>
-      <div class="slide-card" data-project="3">
-        <img src="images/portfolio/metco-thumb.webp" alt="Metco">
-      </div>
-      <div class="slide-card" data-project="4">
-        <img src="images/portfolio/nutrionary-thumb.webp" alt="Nutrionary">
-      </div>
-      <div class="slide-card" data-project="5">
-        <img src="images/portfolio/eu-thumb.webp" alt="EU">
-      </div>
-      <div class="slide-card" data-project="6">
-        <img src="images/portfolio/del-reino-thumb.webp" alt="Del Reino">
-      </div>
-      <div class="slide-card" data-project="7">
-        <img src="images/portfolio/glide-thumb.webp" alt="Glide">
-      </div>
-      <div class="slide-card" data-project="8">
-        <img src="images/portfolio/andino-y-andino-thumb.webp" alt="Andino & Andino">
-      </div>
-      <div class="slide-card" data-project="9">
-        <img src="images/portfolio/hawk-media-thumb.webp" alt="Hawk Media">
-      </div>
-      <div class="slide-card" data-project="10">
-        <img src="images/portfolio/zeta-thumb.webp" alt="ZETA">
-      </div>
-      <div class="slide-card" data-project="11">
-        <img src="images/portfolio/traducela-thumb.webp" alt="Tradúcela">
-      </div>
-      <div class="slide-card" data-project="11">
-        <img src="images/portfolio/andino-express-thumb.webp" alt="Andino Express">
-      </div>
-    </div>
-    
-    <button class="nav-btn next-btn" aria-label="Next">&#10095;</button>
+    <!-- ═══════════════════════════════════════════
+     MINT GRIDS — Portfolio Section
+     Insert this block wherever you need it.
+     Requires: portfolio.css + portfolio.js
+     ═══════════════════════════════════════════ -->
+
+<section class="pf" id="portfolio">
+  <div class="pf__header container">
+    <span class="section-tag">Portfolio</span>
+    <h2 class="section-title">Selected<br><em>work.</em></h2>
   </div>
 
+  <!-- SLIDER -->
+  <div class="pf__slider-wrap">
+    <div class="pf__slider" id="pf-slider" role="list">
+
+      <!-- ── PROJECT 01: AQUAAM ── -->
+      <div class="pf__card" role="listitem" data-project="aquaam"
+        data-title="AQUAAM"
+        data-desc="Complete brand identity for a premium water purification startup. Logo system, color palette, typography, and brand guidelines."
+        data-cover="images/portfolio/aquaam-cover.webp"
+        data-sm1="images/portfolio/aquaam-01.webp"
+        data-sm2="images/portfolio/aquaam-02.webp"
+        data-sm3="images/portfolio/aquaam-03.webp"
+        data-sq1="images/portfolio/aquaam-04.webp"
+        data-sq2="images/portfolio/aquaam-05.webp">
+        <div class="pf__card-img-wrap">
+          <img src="images/portfolio/aquaam-thumb.webp" alt="AQUAAM brand identity" class="pf__card-img" loading="lazy">
+          <div class="pf__card-overlay" aria-hidden="true">
+            <span class="pf__card-label">View project</span>
+          </div>
+        </div>
+        <p class="pf__card-name">AQUAAM</p>
+        <p class="pf__card-cat">Branding</p>
+      </div>
+
+      <!-- ── PROJECT 02: MEADOW BEER ── -->
+      <div class="pf__card" role="listitem" data-project="meadow"
+        data-title="MEADOW Beer"
+        data-desc="Packaging design for a craft beer brand. Label design, color system, and brand identity across multiple product variants."
+        data-cover="images/portfolio/meadow-cover.webp"
+        data-sm1="images/portfolio/meadow-01.webp"
+        data-sm2="images/portfolio/meadow-02.webp"
+        data-sm3="images/portfolio/meadow-03.webp"
+        data-sq1="images/portfolio/meadow-04.webp"
+        data-sq2="images/portfolio/meadow-05.webp">
+        <div class="pf__card-img-wrap">
+          <img src="images/portfolio/meadow-thumb.webp" alt="MEADOW Beer packaging" class="pf__card-img" loading="lazy">
+          <div class="pf__card-overlay" aria-hidden="true">
+            <span class="pf__card-label">View project</span>
+          </div>
+        </div>
+        <p class="pf__card-name">MEADOW Beer</p>
+        <p class="pf__card-cat">Packaging</p>
+      </div>
+
+      <!-- ── PROJECT 03: METCO ── -->
+      <div class="pf__card" role="listitem" data-project="metco"
+        data-title="METCO"
+        data-desc="Corporate brand identity for a construction and engineering company. Logo, stationery, and visual system."
+        data-cover="images/portfolio/metco-cover.webp"
+        data-sm1="images/portfolio/metco-01.webp"
+        data-sm2="images/portfolio/metco-02.webp"
+        data-sm3="images/portfolio/metco-03.webp"
+        data-sq1="images/portfolio/metco-04.webp"
+        data-sq2="images/portfolio/metco-05.webp">
+        <div class="pf__card-img-wrap">
+          <img src="images/portfolio/metco-thumb.webp" alt="METCO brand identity" class="pf__card-img" loading="lazy">
+          <div class="pf__card-overlay" aria-hidden="true">
+            <span class="pf__card-label">View project</span>
+          </div>
+        </div>
+        <p class="pf__card-name">METCO</p>
+        <p class="pf__card-cat">Branding</p>
+      </div>
+
+      <!-- ── PROJECT 04: BIRMI ── -->
+      <div class="pf__card" role="listitem" data-project="birmi"
+        data-title="Birmi"
+        data-desc="Brand identity and visual system for a modern lifestyle brand. Logo, color palette, and brand guidelines."
+        data-cover="images/portfolio/birmi-cover.webp"
+        data-sm1="images/portfolio/birmi-01.webp"
+        data-sm2="images/portfolio/birmi-02.webp"
+        data-sm3="images/portfolio/birmi-03.webp"
+        data-sq1="images/portfolio/birmi-04.webp"
+        data-sq2="images/portfolio/birmi-05.webp">
+        <div class="pf__card-img-wrap">
+          <img src="images/portfolio/birmi-thumb.webp" alt="Birmi brand identity" class="pf__card-img" loading="lazy">
+          <div class="pf__card-overlay" aria-hidden="true">
+            <span class="pf__card-label">View project</span>
+          </div>
+        </div>
+        <p class="pf__card-name">Birmi</p>
+        <p class="pf__card-cat">Branding</p>
+      </div>
+
+      <!-- ── PROJECT 05: OSCARISMS ── -->
+      <div class="pf__card" role="listitem" data-project="oscarisms"
+        data-title="Oscarisms"
+        data-desc="Editorial design for an anthology of poetry. Book layout, typography, cover design, and print-ready production."
+        data-cover="images/portfolio/oscarisms-cover.webp"
+        data-sm1="images/portfolio/oscarisms-01.webp"
+        data-sm2="images/portfolio/oscarisms-02.webp"
+        data-sm3="images/portfolio/oscarisms-03.webp"
+        data-sq1="images/portfolio/oscarisms-04.webp"
+        data-sq2="images/portfolio/oscarisms-05.webp">
+        <div class="pf__card-img-wrap">
+          <img src="images/portfolio/oscarisms-thumb.webp" alt="Oscarisms editorial design" class="pf__card-img" loading="lazy">
+          <div class="pf__card-overlay" aria-hidden="true">
+            <span class="pf__card-label">View project</span>
+          </div>
+        </div>
+        <p class="pf__card-name">Oscarisms</p>
+        <p class="pf__card-cat">Editorial</p>
+      </div>
+
+      <!-- ── PROJECT 06: OCTOPUS WINE ── -->
+      <div class="pf__card" role="listitem" data-project="octopus"
+        data-title="Octopus Wine"
+        data-desc="Packaging and label design for a boutique wine brand. Illustration, typography, and print production."
+        data-cover="images/portfolio/octopus-cover.webp"
+        data-sm1="images/portfolio/octopus-01.webp"
+        data-sm2="images/portfolio/octopus-02.webp"
+        data-sm3="images/portfolio/octopus-03.webp"
+        data-sq1="images/portfolio/octopus-04.webp"
+        data-sq2="images/portfolio/octopus-05.webp">
+        <div class="pf__card-img-wrap">
+          <img src="images/portfolio/octopus-thumb.webp" alt="Octopus Wine packaging" class="pf__card-img" loading="lazy">
+          <div class="pf__card-overlay" aria-hidden="true">
+            <span class="pf__card-label">View project</span>
+          </div>
+        </div>
+        <p class="pf__card-name">Octopus Wine</p>
+        <p class="pf__card-cat">Packaging</p>
+      </div>
+
+      <!-- Add more projects following the same pattern -->
+
+    </div>
+
+    <!-- Arrow controls -->
+    <button class="pf__arrow pf__arrow--prev" id="pf-prev" aria-label="Previous project">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="pf__arrow pf__arrow--next" id="pf-next" aria-label="Next project">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 6 15 12 9 18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Dots -->
+  <div class="pf__dots" id="pf-dots" role="tablist" aria-label="Portfolio navigation"></div>
 </section>
 
-<dialog id="projectModal" class="portfolio-modal">
-  <div class="modal-content">
-    <button class="close-modal" id="closeModal" aria-label="Close">&times;</button>
-    
-    <section class="modal-sec-hero">
-      <img id="modalHero" src="" alt="Hero del proyecto" class="img-responsive">
-    </section>
 
-    <section class="modal-sec-info">
-      <div class="info-col-title">
-        <h2 id="modalTitle">AQUAAM</h2>
+<!-- ═══════════════════════════════════════════
+     PROJECT MODAL
+     Single instance — JS populates it per project
+     ═══════════════════════════════════════════ -->
+<dialog class="pf-modal" id="pf-modal" aria-modal="true" aria-label="Project details">
+
+  <button class="pf-modal__close" id="pf-modal-close" aria-label="Close project">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <div class="pf-modal__inner">
+
+    <!-- S1: Hero image 4:3 -->
+    <div class="pf-modal__cover-wrap">
+      <img class="pf-modal__cover" id="pf-modal-cover" src="" alt="" loading="lazy">
+    </div>
+
+    <!-- S2: Title + description -->
+    <div class="pf-modal__meta">
+      <div class="pf-modal__meta-title">
+        <h3 class="pf-modal__title" id="pf-modal-title"></h3>
       </div>
-      <div class="info-col-desc">
-        <p id="modalDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div class="pf-modal__meta-desc">
+        <p class="pf-modal__desc" id="pf-modal-desc"></p>
       </div>
-    </section>
+    </div>
 
-    <section class="modal-sec-triple">
-      <div class="grid-col"><img id="modalImg01" src="" alt="Detalle 1" class="img-responsive"></div>
-      <div class="grid-col"><img id="modalImg02" src="" alt="Detalle 2" class="img-responsive"></div>
-      <div class="grid-col"><img id="modalImg03" src="" alt="Detalle 3" class="img-responsive"></div>
-    </section>
+    <!-- S3: Three small images 1:1 -->
+    <div class="pf-modal__trio">
+      <div class="pf-modal__sq-wrap">
+        <img class="pf-modal__sq" id="pf-modal-sm1" src="" alt="" loading="lazy">
+      </div>
+      <div class="pf-modal__sq-wrap">
+        <img class="pf-modal__sq" id="pf-modal-sm2" src="" alt="" loading="lazy">
+      </div>
+      <div class="pf-modal__sq-wrap">
+        <img class="pf-modal__sq" id="pf-modal-sm3" src="" alt="" loading="lazy">
+      </div>
+    </div>
 
-    <section class="modal-sec-double">
-      <div class="grid-col"><img id="modalImg04" src="" alt="Detalle 4" class="img-responsive"></div>
-      <div class="grid-col"><img id="modalImg05" src="" alt="Detalle 5" class="img-responsive"></div>
-    </section>
+    <!-- S4: Two square images -->
+    <div class="pf-modal__pair">
+      <div class="pf-modal__sq-wrap">
+        <img class="pf-modal__sq" id="pf-modal-sq1" src="" alt="" loading="lazy">
+      </div>
+      <div class="pf-modal__sq-wrap">
+        <img class="pf-modal__sq" id="pf-modal-sq2" src="" alt="" loading="lazy">
+      </div>
+    </div>
+
   </div>
 </dialog>
 
