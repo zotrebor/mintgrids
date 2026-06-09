@@ -179,3 +179,140 @@
 document.addEventListener('contextmenu', e => {
   if (e.target.tagName === 'IMG') e.preventDefault();
 });
+
+
+
+// --- PORTAFOLIO V.2 ---
+
+// 1. Datos temporales de los proyectos (Fácil de actualizar luego)
+const projectsData = {
+  "1": { title: "Proyecto Aquaam 1", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin de mi de." },
+  "2": { title: "Proyecto Aquaam 2", desc: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium." },
+  "3": { title: "Proyecto Aquaam 3", desc: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis." },
+  "4": { title: "Proyecto Aquaam 4", desc: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis." }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("portfolioSlider");
+  const cards = document.querySelectorAll(".slide-card");
+  const modal = document.getElementById("projectModal");
+  const closeModal = document.getElementById("closeModal");
+  
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  let autoPlayInterval;
+  let direction = 1; // 1 = Derecha, -1 = Izquierda
+  let isPaused = false;
+
+  // --- DETECCIÓN DE CARD CENTRAL (Intersection Observer) ---
+  const observerOptions = {
+    root: slider,
+    rootMargin: "0px -40% 0px -40%", // Ajusta la franja central de detección
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach(c => c.classList.remove("is-active"));
+        entry.target.classList.add("is-active");
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => observer.observe(card));
+
+  // --- LÓGICA DE MOVIMIENTO AUTOMÁTICO E INTELIGENTE ---
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      if (isPaused) return;
+
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      
+      // Control de rebote al llegar a los extremos
+      if (slider.scrollLeft >= maxScroll - 5 && direction === 1) {
+        direction = -1; // Cambia trayectoria a la izquierda
+      } else if (slider.scrollLeft <= 5 && direction === -1) {
+        direction = 1;  // Cambia trayectoria a la derecha
+      }
+
+      // Desplazamiento equivalente a una card aproximada
+      const shift = (slider.clientWidth * 0.4) * direction; 
+      slider.scrollBy({ left: shift, behavior: "smooth" });
+
+    }, 2500); // Velocidad/Pausa entre movimientos (2.5 segundos)
+  }
+
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+
+  // Eventos para pausar con Hover (Desktop) y Touch (Móvil)
+  slider.addEventListener("mouseenter", () => isPaused = true);
+  slider.addEventListener("mouseleave", () => isPaused = false);
+  slider.addEventListener("touchstart", () => isPaused = true, {passive: true});
+  slider.addEventListener("touchend", () => {
+    // Pequeño delay tras soltar el dedo para reanudar suavemente
+    setTimeout(() => { isPaused = false; }, 1500);
+  });
+
+  // --- BOTONES DE NAVEGACIÓN (FLECHAS) ---
+  nextBtn.addEventListener("click", () => {
+    direction = 1;
+    const shift = slider.clientWidth * 0.4;
+    slider.scrollBy({ left: shift, behavior: "smooth" });
+  });
+
+  prevBtn.addEventListener("click", () => {
+    direction = -1;
+    const shift = slider.clientWidth * 0.4;
+    slider.scrollBy({ left: -shift, behavior: "smooth" });
+  });
+
+  // --- APERTURA DEL MODAL (Solo si es la Card Central Activa) ---
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      if (!card.classList.contains("is-active")) {
+        // Si clickeas una lateral, hace scroll hacia ella en lugar de abrir el modal
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        return;
+      }
+
+      const projectId = card.getAttribute("data-project");
+      const data = projectsData[projectId];
+
+      // Inyectamos dinámicamente la información
+      document.getElementById("modalHero").src = `images/portfolio/aquaam-cover.webp`;
+      document.getElementById("modalTitle").innerText = data.title;
+      document.getElementById("modalDesc").innerText = data.desc;
+      
+      document.getElementById("modalImg01").src = `images/portfolio/aquaam-01.webp`;
+      document.getElementById("modalImg02").src = `images/portfolio/aquaam-02.webp`;
+      document.getElementById("modalImg03").src = `images/portfolio/aquaam-03.webp`;
+      document.getElementById("modalImg04").src = `images/portfolio/aquaam-04.webp`;
+      document.getElementById("modalImg05").src = `images/portfolio/aquaam-05.webp`;
+
+      // Abrimos el modal de forma nativa e interrumpimos el autoplay
+      stopAutoPlay();
+      modal.showModal();
+    });
+  });
+
+  // Cerrar Modal
+  closeModal.addEventListener("click", () => {
+    modal.close();
+    startAutoPlay();
+  });
+
+  // Cerrar haciendo click en el backdrop oscuro
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.close();
+      startAutoPlay();
+    }
+  });
+
+  // Iniciar el ciclo al cargar la web
+  startAutoPlay();
+});
