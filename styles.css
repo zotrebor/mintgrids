@@ -927,7 +927,7 @@ z-index: 1;
 .reveal--delay-3 { transition-delay: 360ms; }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE (Integrado con Gigs)
    ============================================= */
 @media (max-width: 960px) {
   .servicios__grid { grid-template-columns: repeat(2, 1fr); }
@@ -961,11 +961,51 @@ z-index: 1;
   .sobre-mi__stats { gap: 24px; }
   .footer__inner { flex-direction: column; gap: 8px; text-align: center; }
   .br-desk { display: none; }
+
+  /* ── Ajustes de Gigs para Tablets/Móviles ── */
+  .gigs {
+    padding: 60px 16px; /* Menos espacio muerto a los lados */
+  }
+  .gigs__grid { 
+    grid-template-columns: 1fr; /* Una sola columna para que las cards respiren */
+    gap: 24px; 
+  }
+  .gigs .section-title {
+    font-size: 2.6rem; /* Reducción intermedia del título Navy Blue */
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .gig-card__body {
+    padding: 24px; /* Reducimos el colchón interno de la tarjeta */
+  }
+  .gig-card__title {
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+  }
+  .gig-card__desc {
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+  }
+  .gig-slider__btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+  .gig-slider__btn--prev { left: 8px; }
+  .gig-slider__btn--next { right: 8px; }
 }
 
 @media (max-width: 480px) {
   .hero__title { font-size: 3rem; }
   .contacto__title { font-size: 2.5rem; }
+  
+  /* ── Ajuste fino para teléfonos pantallas pequeñas ── */
+  .gigs .section-title {
+    font-size: 2.1rem; /* El título se adapta perfecto para que no rompa feo */
+  }
+  .gig-card__body {
+    padding: 20px; /* Maximizamos el espacio horizontal para tus textos */
+  }
 }
 
 /* Scroll-driven: barra de progreso de lectura (Chrome/Edge 115+) */
