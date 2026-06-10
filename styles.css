@@ -453,32 +453,35 @@ em { font-style: italic; color: var(--accent); }
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  margin: 0;
+  margin: auto; /* Centra el diálogo nativo en la pantalla */
   padding: 0;
   border: none;
   background: transparent;
   z-index: 200;
+  
+  /* Animación nativa fluida */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
+/* Cuando el diálogo está abierto por JS, activamos visibilidad */
 .pf-modal[open] {
   opacity: 1;
   pointer-events: all;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
 .pf-modal::backdrop {
   background: rgba(8, 8, 12, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
 .pf-modal__inner {
   position: relative;
-  width: 100%;
+  width: calc(100% - 32px); /* Margen seguro en pantallas pequeñas */
   max-width: 800px;
-  margin: 0 auto;
+  margin: 30px auto; /* Lo centra horizontalmente */
   background: rgba(18, 18, 24, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -489,9 +492,6 @@ em { font-style: italic; color: var(--accent); }
   flex-direction: column;
   gap: 25px;
   box-sizing: border-box;
-}
-.pf-modal[open] .pf-modal__inner {
-  transform: translateY(0) scale(1);
 }
 
 /* Close button */
@@ -605,6 +605,7 @@ em { font-style: italic; color: var(--accent); }
 @media (min-width: 768px) {
   .pf-modal__inner {
     padding: 40px;
+    margin: 10vh auto; /* Separa el modal proporcionalmente del borde superior */
   }
   .pf-modal__meta {
     grid-template-columns: 1fr 2fr; /* Título a la izquierda, descripción a la derecha */
