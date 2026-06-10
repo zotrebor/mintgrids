@@ -776,241 +776,62 @@ z-index: 1;
 }
 
 /* =============================================
-    PORTAFOLIO v.2
+    PORTAFOLIO v.3 Simple
     ============================================ */
 
-    .carrusel-contenedor {
+    /* ═══════════════════════════════════════════
+   MINT GRIDS — portfolio.css (simple)
+   ═══════════════════════════════════════════ */
+
+/* ─── SECTION ─── */
+.pf-section {
+  padding: 100px 0;
+}
+.pf-section .section-title {
+  margin-bottom: 40px;
+}
+
+/* ─── YOUR CARRUSEL (unchanged) ─── */
+.carrusel-contenedor {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
-
 .carrusel-contenedor::-webkit-scrollbar {
   display: none;
 }
-
 .carrusel-elementos {
   display: flex;
   gap: 20px;
   padding: 0 20px;
 }
-
 .carrusel-elementos img {
   flex-shrink: 0;
   width: 300px;
   height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
-
 .carrusel-elementos img:hover {
   transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
+  .carrusel-elementos img {
+    width: 220px;
+  }
   .carrusel-elementos {
-    justify-content: flex-start;
+    padding: 0 16px;
   }
 }
 
- /* ═══════════════════════════════════════════
-   MINT GRIDS — portfolio.css
-   Focus-center slider + project modal
-   Assumes your main styles.css is already loaded
-   (tokens: --accent, --serif, --sans, etc.)
-   ═══════════════════════════════════════════ */
-
-/* ─── SECTION ─── */
-.pf {
-  padding: 100px 0;
-  /* Inherits background from its parent section —
-     drop it inside .section--dark or .section--light as needed */
-}
-.pf__header {
-  margin-bottom: 52px;
-}
-
-
-/* ─── SLIDER WRAPPER ─── */
-.pf__slider-wrap {
-  position: relative;
-}
-
-.pf__slider {
-  display: flex;
-  gap: 20px;
-  padding: 24px 0 32px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;       /* Firefox */
-  cursor: grab;
-  /* Left/right padding so the active center card has breathing room */
-  padding-left: calc(50vw - 160px);
-  padding-right: calc(50vw - 160px);
-}
-.pf__slider::-webkit-scrollbar { display: none; }
-.pf__slider.is-dragging { cursor: grabbing; }
-
-/* ─── CARDS ─── */
-.pf__card {
-  flex-shrink: 0;
-  width: 280px;
-  scroll-snap-align: center;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
-              opacity  0.4s cubic-bezier(0.4,0,0.2,1);
-  /* Default: slightly smaller and dimmer */
-  transform: scale(0.88);
-  opacity: 0.5;
-  outline: none;
-}
-.pf__card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 14px;
-}
-
-/* Active (center) card */
-.pf__card.is-active {
-  transform: scale(1);
-  opacity: 1;
-}
-
-/* Image container — 1:1 ratio */
-.pf__card-img-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #1c1c26;
-}
-
-.pf__card-img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-  display: block;
-}
-
-/* Overlay label */
-.pf__card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s;
-}
-.pf__card-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #fff;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.3s, transform 0.3s;
-  font-family: var(--sans, 'DM Sans', sans-serif);
-}
-
-/* Active card hover/focus states */
-.pf__card.is-active .pf__card-img-wrap:hover .pf__card-overlay,
-.pf__card.is-active:focus-visible .pf__card-overlay {
-  background: rgba(0,0,0,0.45);
-}
-.pf__card.is-active .pf__card-img-wrap:hover .pf__card-label,
-.pf__card.is-active:focus-visible .pf__card-label {
-  opacity: 1;
-  transform: translateY(0);
-}
-.pf__card.is-active .pf__card-img-wrap:hover .pf__card-img {
-  transform: scale(1.04);
-}
-
-/* Card text */
-.pf__card-name {
-  margin-top: 12px;
-  font-family: var(--serif, 'DM Serif Display', serif);
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--dk-text, #ededf0);
-  transition: color 0.2s;
-}
-.pf__card.is-active .pf__card-name {
-  color: #fff;
-}
-.pf__card-cat {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent, #00ffcc);
-  margin-top: 4px;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s, transform 0.3s;
-}
-.pf__card.is-active .pf__card-cat {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── ARROW CONTROLS ─── */
-.pf__arrow {
-  position: absolute;
-  top: calc(50% - 24px);
-  transform: translateY(-50%);
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(12,12,16,0.7);
-  backdrop-filter: blur(12px);
-  color: #fff;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
-  z-index: 10;
-}
-.pf__arrow svg { width: 18px; height: 18px; }
-.pf__arrow:hover {
-  border-color: var(--accent, #00ffcc);
-  color: var(--accent, #00ffcc);
-  background: rgba(0,255,204,0.1);
-}
-.pf__arrow:active { transform: translateY(-50%) scale(0.94); }
-.pf__arrow--prev { left: 16px; }
-.pf__arrow--next { right: 16px; }
-
-/* ─── DOTS ─── */
-.pf__dots {
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 4px;
-}
-.pf__dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  border: none; padding: 0; cursor: pointer;
-  background: rgba(255,255,255,0.2);
-  transition: background 0.2s, transform 0.2s;
-}
-.pf__dot.is-active {
-  background: var(--accent, #00ffcc);
-  transform: scale(1.3);
-}
-
-/* ═══════════════════════════════════════════
-   MODAL
-   ═══════════════════════════════════════════ */
-   
+/* ─── MODAL ─── */
 .pf-modal {
   position: fixed;
   inset: 0;
@@ -1023,11 +844,9 @@ z-index: 1;
   border: none;
   background: transparent;
   z-index: 200;
-
-  /* Hidden by default */
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 0.3s ease;
 }
 .pf-modal[open] {
   opacity: 1;
@@ -1036,34 +855,28 @@ z-index: 1;
   align-items: center;
   justify-content: center;
 }
-/* Backdrop */
 .pf-modal::backdrop {
-  background: rgba(8,8,12,0.85);
+  background: rgba(8, 8, 12, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
-
-/* Modal panel */
 .pf-modal__inner {
   position: relative;
   width: min(860px, calc(100vw - 32px));
   max-height: calc(100dvh - 40px);
   overflow-y: auto;
-  overflow-x: hidden;
   background: #16161e;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 32px;
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.1) transparent;
   transform: translateY(16px) scale(0.98);
-  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.35s ease;
 }
 .pf-modal[open] .pf-modal__inner {
   transform: translateY(0) scale(1);
 }
-.pf-modal__inner::-webkit-scrollbar { width: 4px; }
-.pf-modal__inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
 
 /* Close button */
 .pf-modal__close {
@@ -1075,17 +888,16 @@ z-index: 1;
   width: 36px; height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(22,22,30,0.9);
+  background: rgba(22, 22, 30, 0.9);
   color: rgba(255,255,255,0.7);
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  transition: border-color 0.2s, color 0.2s;
 }
 .pf-modal__close svg { width: 16px; height: 16px; }
 .pf-modal__close:hover {
-  border-color: var(--accent, #00ffcc);
-  color: var(--accent, #00ffcc);
-  background: rgba(0,255,204,0.08);
+  border-color: #00ffcc;
+  color: #00ffcc;
 }
 
 /* S1 — Cover 4:3 */
@@ -1103,7 +915,7 @@ z-index: 1;
   display: block;
 }
 
-/* S2 — Meta: title + description */
+/* S2 — Title + desc */
 .pf-modal__meta {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1113,22 +925,21 @@ z-index: 1;
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .pf-modal__title {
-  font-family: var(--serif, 'DM Serif Display', serif);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: #fff;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 .pf-modal__desc {
-  font-size: 0.925rem;
+  font-size: 0.9rem;
   color: rgba(255,255,255,0.55);
   line-height: 1.75;
   font-weight: 300;
-  font-family: var(--sans, 'DM Sans', sans-serif);
-  padding-top: 6px;
+  padding-top: 4px;
 }
 
-/* S3 — Three 1:1 images */
+/* S3 — Three 1:1 */
 .pf-modal__trio {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1136,14 +947,13 @@ z-index: 1;
   margin-bottom: 12px;
 }
 
-/* S4 — Two 1:1 images */
+/* S4 — Two 1:1 */
 .pf-modal__pair {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-/* Shared square image */
 .pf-modal__sq-wrap {
   aspect-ratio: 1 / 1;
   border-radius: 10px;
@@ -1154,10 +964,18 @@ z-index: 1;
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.4s ease;
 }
 .pf-modal__sq-wrap:hover .pf-modal__sq {
   transform: scale(1.04);
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+  .pf-modal__inner { padding: 20px 16px; }
+  .pf-modal__meta { grid-template-columns: 1fr; gap: 10px; }
+  .pf-modal__trio { gap: 8px; }
+  .pf-modal__pair { gap: 8px; }
 }
 
 /* ═══════════════════════════════════════════

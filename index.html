@@ -78,18 +78,111 @@
 
     <!-- PORTAFOLIO-->
 
-  <section class="carrusel-seccion">
-        <div class="carrusel-contenedor">
-            <div class="carrusel-elementos">
-                <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1">
-                <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2">
-                <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3">
-                <img src="https://via.placeholder.com/300x200?text=Imagen+4" alt="Imagen 4">
-                <img src="https://via.placeholder.com/300x200?text=Imagen+5" alt="Imagen 5">
-                <img src="https://via.placeholder.com/300x200?text=Imagen+6" alt="Imagen 6">
-            </div>
-        </div>
-    </section>
+  <!-- ═══════════════════════════════════════════
+     MINT GRIDS — Portfolio Section (simple)
+     Requires: portfolio.css + portfolio.js
+     ═══════════════════════════════════════════ -->
+
+<section class="pf-section" id="portfolio">
+  <div class="container">
+    <span class="section-tag">Portfolio</span>
+    <h2 class="section-title">Selected<br><em>work.</em></h2>
+  </div>
+
+  <div class="carrusel-contenedor">
+    <div class="carrusel-elementos">
+
+      <img src="images/portfolio/aquaam-thumb.webp" alt="AQUAAM"
+        data-title="AQUAAM"
+        data-desc="Complete brand identity for a premium water purification startup. Logo system, color palette, typography, and brand guidelines."
+        data-cover="images/portfolio/aquaam-cover.webp"
+        data-sm1="images/portfolio/aquaam-01.webp"
+        data-sm2="images/portfolio/aquaam-02.webp"
+        data-sm3="images/portfolio/aquaam-03.webp"
+        data-sq1="images/portfolio/aquaam-04.webp"
+        data-sq2="images/portfolio/aquaam-05.webp">
+
+      <img src="images/portfolio/meadow-thumb.webp" alt="MEADOW Beer"
+        data-title="MEADOW Beer"
+        data-desc="Packaging design for a craft beer brand. Label design, color system, and brand identity across multiple product variants."
+        data-cover="images/portfolio/meadow-cover.webp"
+        data-sm1="images/portfolio/meadow-01.webp"
+        data-sm2="images/portfolio/meadow-02.webp"
+        data-sm3="images/portfolio/meadow-03.webp"
+        data-sq1="images/portfolio/meadow-04.webp"
+        data-sq2="images/portfolio/meadow-05.webp">
+
+      <img src="images/portfolio/metco-thumb.webp" alt="METCO"
+        data-title="METCO"
+        data-desc="Corporate brand identity for a construction and engineering company. Logo, stationery, and visual system."
+        data-cover="images/portfolio/metco-cover.webp"
+        data-sm1="images/portfolio/metco-01.webp"
+        data-sm2="images/portfolio/metco-02.webp"
+        data-sm3="images/portfolio/metco-03.webp"
+        data-sq1="images/portfolio/metco-04.webp"
+        data-sq2="images/portfolio/metco-05.webp">
+
+      <img src="images/portfolio/birmi-thumb.webp" alt="Birmi"
+        data-title="Birmi"
+        data-desc="Brand identity and visual system for a modern lifestyle brand. Logo, color palette, and brand guidelines."
+        data-cover="images/portfolio/birmi-cover.webp"
+        data-sm1="images/portfolio/birmi-01.webp"
+        data-sm2="images/portfolio/birmi-02.webp"
+        data-sm3="images/portfolio/birmi-03.webp"
+        data-sq1="images/portfolio/birmi-04.webp"
+        data-sq2="images/portfolio/birmi-05.webp">
+
+      <img src="images/portfolio/oscarisms-thumb.webp" alt="Oscarisms"
+        data-title="Oscarisms"
+        data-desc="Editorial design for an anthology of poetry. Book layout, typography, cover design, and print-ready production."
+        data-cover="images/portfolio/oscarisms-cover.webp"
+        data-sm1="images/portfolio/oscarisms-01.webp"
+        data-sm2="images/portfolio/oscarisms-02.webp"
+        data-sm3="images/portfolio/oscarisms-03.webp"
+        data-sq1="images/portfolio/oscarisms-04.webp"
+        data-sq2="images/portfolio/oscarisms-05.webp">
+
+      <img src="images/portfolio/octopus-thumb.webp" alt="Octopus Wine"
+        data-title="Octopus Wine"
+        data-desc="Packaging and label design for a boutique wine brand. Illustration, typography, and print production."
+        data-cover="images/portfolio/octopus-cover.webp"
+        data-sm1="images/portfolio/octopus-01.webp"
+        data-sm2="images/portfolio/octopus-02.webp"
+        data-sm3="images/portfolio/octopus-03.webp"
+        data-sq1="images/portfolio/octopus-04.webp"
+        data-sq2="images/portfolio/octopus-05.webp">
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL — paste this before </main> -->
+<dialog class="pf-modal" id="pf-modal" aria-modal="true" aria-label="Project details">
+  <button class="pf-modal__close" id="pf-modal-close" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <div class="pf-modal__inner">
+    <div class="pf-modal__cover-wrap">
+      <img class="pf-modal__cover" id="pf-modal-cover" src="" alt="">
+    </div>
+    <div class="pf-modal__meta">
+      <div><h3 class="pf-modal__title" id="pf-modal-title"></h3></div>
+      <div><p class="pf-modal__desc" id="pf-modal-desc"></p></div>
+    </div>
+    <div class="pf-modal__trio">
+      <div class="pf-modal__sq-wrap"><img class="pf-modal__sq" id="pf-modal-sm1" src="" alt=""></div>
+      <div class="pf-modal__sq-wrap"><img class="pf-modal__sq" id="pf-modal-sm2" src="" alt=""></div>
+      <div class="pf-modal__sq-wrap"><img class="pf-modal__sq" id="pf-modal-sm3" src="" alt=""></div>
+    </div>
+    <div class="pf-modal__pair">
+      <div class="pf-modal__sq-wrap"><img class="pf-modal__sq" id="pf-modal-sq1" src="" alt=""></div>
+      <div class="pf-modal__sq-wrap"><img class="pf-modal__sq" id="pf-modal-sq2" src="" alt=""></div>
+    </div>
+  </div>
+</dialog>
 
     <!-- CONTACTO -->
     <section class="contacto" id="contacto">
