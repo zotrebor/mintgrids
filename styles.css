@@ -447,41 +447,27 @@ em { font-style: italic; color: var(--accent); }
 
 /* ─── MODAL ─── */
 .pf-modal {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0;
-  padding: 0;
+  /* Dejamos las propiedades de posicionamiento nativas del navegador */
   border: none;
   background: transparent;
   z-index: 200;
-  
-  /* Dejamos que el navegador controle el despliegue nativo */
-  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
 }
 
-/* Cuando el diálogo está abierto por JS, aseguramos que se centre el contenido */
-.pf-modal[open] {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* El fondo oscuro difuminado detrás del modal */
 .pf-modal::backdrop {
   background: rgba(8, 8, 12, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
+/* Tarjeta interna del modal */
 .pf-modal__inner {
   position: relative;
-  width: calc(100% - 32px); /* Margen seguro en móviles */
+  width: calc(100% - 32px); /* Margen de seguridad lateral en teléfonos */
   max-width: 800px;
-  max-height: 90vh; /* Evita que se salga de las pantallas */
-  overflow-y: auto;  /* Permite scroll dentro del modal si es largo */
   margin: 0 auto;
   background: rgba(18, 18, 24, 0.85);
   backdrop-filter: blur(20px);
@@ -495,7 +481,7 @@ em { font-style: italic; color: var(--accent); }
   box-sizing: border-box;
 }
 
-/* Close button (Fijo arriba a la derecha) */
+/* Botón de cerrar (X) — Fijado estrictamente arriba a la derecha */
 .pf-modal__close {
   position: absolute;
   top: 20px;
@@ -529,18 +515,19 @@ em { font-style: italic; color: var(--accent); }
   background: #1c1c26;
 }
 .pf-modal__cover {
-  width: 100%; height: 100%;
+  width: 100%; 
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* S2 — Title + desc */
+/* S2 — Contenedor de Título + Descripción (Una columna por defecto en móvil) */
 .pf-modal__meta {
   display: grid;
-  grid-template-columns: 1fr; /* 1 columna por defecto en móviles */
+  grid-template-columns: 1fr;
   gap: 16px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 .pf-modal__title {
   font-family: 'DM Serif Display', Georgia, serif;
@@ -551,22 +538,22 @@ em { font-style: italic; color: var(--accent); }
 }
 .pf-modal__desc {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.75;
   font-weight: 300;
 }
 
-/* S3 — Three 1:1 */
+/* S3 — Tres imágenes (Una bajo otra por defecto en móvil) */
 .pf-modal__trio {
   display: grid;
-  grid-template-columns: 1fr; /* 1 columna por defecto en móviles */
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-/* S4 — Two 1:1 */
+/* S4 — Dos imágenes (Una bajo otra por defecto en móvil) */
 .pf-modal__pair {
   display: grid;
-  grid-template-columns: 1fr; /* 1 columna por defecto en móviles */
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -587,32 +574,37 @@ em { font-style: italic; color: var(--accent); }
 }
 
 /* =============================================
-   SISTEMA RESPONSIVE DEL MODAL (Media Queries)
+   REGLAS RESPONSIVE (MEDIA QUERIES)
    ============================================= */
 
-/* Ajustes específicos para móviles */
+/* Ajustes de scroll e interlineado para pantallas móviles */
 @media (max-width: 767px) {
   .pf-modal__inner { 
     padding: 24px 16px; 
+    max-height: 85vh; /* Evita que el contenido largo desborde la pantalla del teléfono */
+    overflow-y: auto;  /* Habilita scroll táctil exclusivo para el modal */
   }
 }
 
-/* Vista de Escritorio (Se activa a partir de 768px o más) */
+/* Comportamiento de Escritorio (Se activa en pantallas medianas y grandes) */
 @media (min-width: 768px) {
   .pf-modal__inner {
     padding: 40px;
     width: 100%;
   }
+  /* Restablece el título a la izquierda y la descripción a la derecha */
   .pf-modal__meta {
-    grid-template-columns: 1fr 2fr; /* 2 columnas en PC */
+    grid-template-columns: 1fr 2fr;
     gap: 24px;
   }
+  /* Restablece las 3 imágenes en línea horizontal */
   .pf-modal__trio {
-    grid-template-columns: repeat(3, 1fr); /* 3 imágenes en línea en PC */
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
   }
+  /* Restablece las 2 imágenes finales en línea horizontal */
   .pf-modal__pair {
-    grid-template-columns: repeat(2, 1fr); /* 2 imágenes en línea en PC */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 }
