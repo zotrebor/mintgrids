@@ -1,5 +1,5 @@
 /* =============================================
-   MINT GRIDS — styles.css v2
+   MINT GRIDS — styles.css v3
    Premium dark · DM Serif Display + DM Sans
    ============================================= */
 
@@ -589,7 +589,7 @@ em { font-style: italic; color: var(--accent); }
 /* ═══════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════ */
-   
+
 @media (max-width: 768px) {
   .pf__slider {
     padding-left: calc(50vw - 130px);
