@@ -5,7 +5,7 @@
 
 /* --- TOKENS --- */
 :root {
-  --bg:        #0c0c0f;
+  --bg:        radial-gradient(circle at top, #0d1932, #0a1429);
   --bg-2:      #111116;
   --bg-3:      #18181f;
   --surface:   #02d5ab;
@@ -152,7 +152,7 @@ em { font-style: italic; color: var(--accent); }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at top, #0d1932, #0a1429);
+  /*background: radial-gradient(circle at top, #0d1932, #0a1429);*/
   pointer-events: none;
 }
 /*.hero__grid {
