@@ -785,7 +785,7 @@ z-index: 1;
 
 /* ─── SECTION ─── */
 .pf-section {
-  padding: 100px 0;
+  padding: 0;
 }
 .pf-section .section-title {
   margin-bottom: 40px;
