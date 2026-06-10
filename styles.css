@@ -494,10 +494,9 @@ em { font-style: italic; color: var(--accent); }
   transform: translateY(0) scale(1);
 }
 .pf-modal__close {
-  position: sticky;
-  top: 0;
-  float: right;
-  margin-bottom: -40px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
   z-index: 10;
   width: 36px; height: 36px;
   border-radius: 50%;
