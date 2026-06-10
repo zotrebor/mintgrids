@@ -30,28 +30,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
   scroll-behavior: smooth;
-  background-color: #0c0c0f; /* Un color oscuro plano de respaldo */
-  min-height: 100vh;
+  background: #0a1429;
+  overflow-x: hidden;
 }
 
-/* Este bloque creará la capa fija de fondo que nunca se mueve */
 html::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -2; /* Se posiciona detrás de absolutamente todo */
-  background: radial-gradient(circle at top, #111a2e 0%, #070b14 60%, #030508 100%);
-  pointer-events: none; /* Evita que interfiera con los clics del usuario */
+  z-index: -1;
+  background: radial-gradient(circle at top, #0d1932, #0a1429);
 }
 
 body {
   font-family: var(--sans);
   color: var(--text);
-  background: transparent !important; /* Forzamos la transparencia total del cuerpo */
+  background: transparent;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-  position: relative;
-  z-index: 1;
+  /* overflow-x: hidden  ← quitar de aquí */
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -157,14 +154,12 @@ em { font-style: italic; color: var(--accent); }
 
 .hero {
   position: relative;
-  background: transparent !important; /* Elimina cualquier remanente opaco */
   min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--nav-h) 24px 80px;
   overflow: hidden;
-  z-index: 2;
 }
 .hero__bg {
   position: absolute;
@@ -378,7 +373,6 @@ em { font-style: italic; color: var(--accent); }
 .pf-section {
   padding: 0;
   position: relative;
-  background: transparent !important; /* Elimina cualquier remanente opaco */ 
   z-index: 2;
 }
 
@@ -476,47 +470,42 @@ em { font-style: italic; color: var(--accent); }
 }
 .pf-modal__inner {
   position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(18, 18, 24, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  box-sizing: border-box;
+  width: min(860px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  background: #16161e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.35s ease;
 }
 .pf-modal[open] .pf-modal__inner {
   transform: translateY(0) scale(1);
 }
 
-/* Close button — Corregido para ubicarse arriba a la derecha */
+/* Close button */
 .pf-modal__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 1.8rem;
-  width: 40px;
-  height: 40px;
+  position: sticky;
+  top: 0;
+  float: right;
+  margin-bottom: -40px;
+  z-index: 10;
+  width: 36px; height: 36px;
   border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(22, 22, 30, 0.9);
+  color: rgba(255,255,255,0.7);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 210;
-  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
 }
 .pf-modal__close svg { width: 16px; height: 16px; }
 .pf-modal__close:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.05);
+  border-color: #00ffcc;
+  color: #00ffcc;
 }
 
 /* S1 — Cover 4:3 */
@@ -534,10 +523,10 @@ em { font-style: italic; color: var(--accent); }
   display: block;
 }
 
-/* S2 — Title + desc (1 columna por defecto en móvil) */
+/* S2 — Title + desc */
 .pf-modal__meta {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 24px;
   margin-bottom: 28px;
   padding-bottom: 28px;
@@ -558,64 +547,43 @@ em { font-style: italic; color: var(--accent); }
   padding-top: 4px;
 }
 
-/* S3 — Three 1:1 (1 columna por defecto en móvil) */
+/* S3 — Three 1:1 */
 .pf-modal__trio {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-/* S4 — Two 1:1 (1 columna por defecto en móvil) */
+/* S4 — Two 1:1 */
 .pf-modal__pair {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
 .pf-modal__sq-wrap {
-  width: 100%;
   aspect-ratio: 1 / 1;
+  border-radius: 10px;
   overflow: hidden;
-  border-radius: var(--radius);
+  background: #1c1c26;
 }
 .pf-modal__sq {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
 .pf-modal__sq-wrap:hover .pf-modal__sq {
   transform: scale(1.04);
 }
 
-/* Ajustes de scroll y padding exclusivos para pantallas móviles */
-@media (max-width: 767px) {
-  .pf-modal__inner { 
-    padding: 24px 16px; 
-    max-height: 85vh;
-    overflow-y: auto;
-  }
-  .pf-modal__meta { gap: 12px; margin-bottom: 20px; padding-bottom: 20px; }
-  .pf-modal__trio { gap: 12px; }
-  .pf-modal__pair { gap: 12px; }
-  .pf-modal__cover-wrap { margin-bottom: 20px; }
-}
-
-/* Media Query Escritorio: Restablece la grilla horizontal original */
-@media (min-width: 768px) {
-  .pf-modal__inner {
-    padding: 40px;
-  }
-  .pf-modal__meta {
-    grid-template-columns: 1fr 2fr;
-    gap: 24px;
-  }
-  .pf-modal__trio {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .pf-modal__pair {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Responsive modal */
+@media (max-width: 768px) {
+  .pf-modal__inner { padding: 20px 16px; }
+  .pf-modal__meta { grid-template-columns: 1fr; gap: 10px; }
+  .pf-modal__trio { gap: 8px; }
+  .pf-modal__pair { gap: 8px; }
 }
 
 /* ═══════════════════════════════════════════
@@ -727,9 +695,6 @@ em { font-style: italic; color: var(--accent); }
    CONTACTO
    ============================================= */
 .contacto {
-  position: relative;
-  background: transparent !important; /* Elimina cualquier remanente opaco */
-  z-index: 2; 
   padding: 120px 24px;
   border-top: 1px solid var(--border);
   text-align: center;
@@ -772,11 +737,14 @@ em { font-style: italic; color: var(--accent); }
    FOOTER
    ============================================= */
 .footer {
-  background: transparent !important; /* Quitamos el fondo sólido residual */
+  /* Forzamos el fondo sólido oscuro (tu azul púrpura) para que no se filtre la galería claro */
+  background: #0d0d25; 
   border-top: 1px solid var(--border);
   padding: 24px;
+  
+  /* Sistema de capas para rescatarlo de la superposición */
   position: relative;
-  z-index: 2;
+  z-index: 3; 
 }
 
 .footer__inner {
