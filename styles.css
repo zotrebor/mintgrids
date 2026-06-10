@@ -496,18 +496,20 @@ em { font-style: italic; color: var(--accent); }
 
 /* Close button */
 .pf-modal__close {
-  position: sticky;
-  top: 0;
-  float: right;
-  margin-bottom: -40px;
+  position: absolute; /* Cambiado de sticky a absolute */
+  top: 20px;          /* Distancia desde el borde superior interno */
+  right: 20px;        /* Distancia desde el borde derecho interno */
   z-index: 10;
-  width: 36px; height: 36px;
+  width: 36px; 
+  height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(22, 22, 30, 0.9);
   color: rgba(255,255,255,0.7);
   cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
   transition: border-color 0.2s, color 0.2s;
 }
 .pf-modal__close svg { width: 16px; height: 16px; }
