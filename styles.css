@@ -712,6 +712,15 @@ em { font-style: italic; color: var(--accent); }
   max-width: 680px;
   margin: auto; 
 }
+.section-tag {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: block; /* Asegura que se comporte como bloque y respete los márgenes */
+}
 .contacto__title {
   font-family: var(--serif);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
