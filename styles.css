@@ -710,13 +710,7 @@ em { font-style: italic; color: var(--accent); }
 }
 .contacto__inner {
   max-width: 680px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-top: 38px;
-  margin-bottom: 28px; 
+  margin: auto; 
 }
 .contacto__title {
   font-family: var(--serif);
