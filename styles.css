@@ -149,7 +149,7 @@ em { font-style: italic; color: var(--accent); }
   overflow: hidden;
 }
 .hero__bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   background: radial-gradient(circle at top, #0d1932, #0a1429);
@@ -806,6 +806,8 @@ z-index: 1;
 
 .pf-section {
   padding: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .pf-section .container {
