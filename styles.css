@@ -31,6 +31,7 @@
 html {
   scroll-behavior: smooth;
   background: #0a1429;
+  overflow-x: hidden;
 }
 
 html::before {
@@ -47,7 +48,7 @@ body {
   background: transparent;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* overflow-x: hidden  ← quitar de aquí */
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
