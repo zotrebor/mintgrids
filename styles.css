@@ -28,12 +28,23 @@
 
 /* --- RESET --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; background: #0a1429; }
+html {
+  scroll-behavior: smooth;
+  background: #0a1429;
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at top, #0d1932, #0a1429);
+}
+
 body {
   font-family: var(--sans);
   color: var(--text);
-  background: radial-gradient(circle at top, #0d1932, #0a1429);
-  background-attachment: fixed;
+  background: transparent;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
