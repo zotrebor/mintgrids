@@ -468,7 +468,7 @@ em { font-style: italic; color: var(--accent); }
   opacity: 1;
   pointer-events: all;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .pf-modal::backdrop {
@@ -479,7 +479,7 @@ em { font-style: italic; color: var(--accent); }
 .pf-modal__inner {
   position: relative;
   width: min(860px, calc(100vw - 32px));
-  max-height: calc(100dvh - 40px);
+  height: 100dvh;
   overflow-y: auto;
   background: #16161e;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -493,23 +493,19 @@ em { font-style: italic; color: var(--accent); }
 .pf-modal[open] .pf-modal__inner {
   transform: translateY(0) scale(1);
 }
-
-/* Close button */
 .pf-modal__close {
-  position: absolute; /* Cambiado de sticky a absolute */
-  top: 20px;          /* Distancia desde el borde superior interno */
-  right: 20px;        /* Distancia desde el borde derecho interno */
+  position: sticky;
+  top: 0;
+  float: right;
+  margin-bottom: -40px;
   z-index: 10;
-  width: 36px; 
-  height: 36px;
+  width: 36px; height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(22, 22, 30, 0.9);
   color: rgba(255,255,255,0.7);
   cursor: pointer;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   transition: border-color 0.2s, color 0.2s;
 }
 .pf-modal__close svg { width: 16px; height: 16px; }
@@ -517,23 +513,19 @@ em { font-style: italic; color: var(--accent); }
   border-color: #00ffcc;
   color: #00ffcc;
 }
-
-/* S1 — Cover 4:3 */
 .pf-modal__cover-wrap {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 12px;
   overflow: hidden;
   background: #1c1c26;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 .pf-modal__cover {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
 }
-
-/* S2 — Title + desc: una columna siempre */
 .pf-modal__meta {
   display: flex;
   flex-direction: column;
@@ -556,22 +548,17 @@ em { font-style: italic; color: var(--accent); }
   font-weight: 300;
   padding-top: 4px;
 }
-
-/* S3 — tres imágenes: una columna en móvil, tres en desktop */
 .pf-modal__trio {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
   margin-bottom: 12px;
 }
-
-/* S4 — dos imágenes: una columna en móvil, dos en desktop */
 .pf-modal__pair {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
 }
-
 .pf-modal__sq-wrap {
   aspect-ratio: 1 / 1;
   border-radius: 10px;
@@ -588,8 +575,11 @@ em { font-style: italic; color: var(--accent); }
   transform: scale(1.04);
 }
 
-/* Desktop: recupera el layout multi-columna */
 @media (min-width: 600px) {
+  .pf-modal__inner {
+    height: auto;
+    max-height: calc(100dvh - 40px);
+  }
   .pf-modal__meta { flex-direction: row; }
   .pf-modal__meta > div:first-child { flex: 1; }
   .pf-modal__meta > div:last-child  { flex: 2; }
@@ -597,33 +587,11 @@ em { font-style: italic; color: var(--accent); }
   .pf-modal__pair { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════ */
-
-@media (max-width: 768px) {
-  .pf__slider {
-    padding-left: calc(50vw - 130px);
-    padding-right: calc(50vw - 130px);
-    gap: 14px;
-  }
-  .pf__card { width: 240px; }
-  .pf__arrow { display: none; } /* arrows hidden on touch; swipe is enough */
-
-  .pf-modal__inner { padding: 20px 16px; }
-  .pf-modal__meta {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .pf-modal__trio { gap: 8px; }
-  .pf-modal__pair { gap: 8px; }
-}
-
-@media (max-width: 480px) {
-  .pf__card { width: 200px; }
-  .pf__slider {
-    padding-left: calc(50vw - 110px);
-    padding-right: calc(50vw - 110px);
+@media (max-width: 599px) {
+  .pf-modal__inner {
+    width: 100%;
+    border-radius: 0;
+    padding: 20px 16px;
   }
 }
 
