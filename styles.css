@@ -32,7 +32,8 @@ html { scroll-behavior: smooth; background: var(--bg); }
 body {
   font-family: var(--sans);
   color: var(--text);
-  background: radial-gradient(circle at top, #0d1932, #0a1429) fixed;
+  background: radial-gradient(circle at top, #0d1932, #0a1429);
+  background-attachment: fixed;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
