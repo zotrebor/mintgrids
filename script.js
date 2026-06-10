@@ -184,114 +184,21 @@ document.addEventListener('contextmenu', e => {
 
 // --- PORTAFOLIO V.3 ---
 
-// --- PORTAFOLIO INTELIGENTE MULTI-SLIDER & DIALOG ---
+/* ═══════════════════════════════════════════
+   MINT GRIDS — portfolio.js (simple)
+   ═══════════════════════════════════════════ */
+
+'use strict';
+
 (function () {
   const modal      = document.getElementById('pf-modal');
   const modalClose = document.getElementById('pf-modal-close');
-  const sliders    = document.querySelectorAll('.carrusel-contenedor');
+  const images     = document.querySelectorAll('.carrusel-elementos img');
 
-  if (!modal || !sliders.length) return;
+  if (!modal || !images.length) return;
 
-  // Configuración global de velocidad de los sliders
-  const scrollSpeed = 0.8; // Pixeles por frame (Ajusta si deseas más rápido o lento)
-
-  sliders.forEach(slider => {
-    const track = slider.querySelector('.carrusel-elementos');
-    const images = track.querySelectorAll('img');
-    
-    let animationFrameId = null;
-    let direction = 1; // 1 = Derecha, -1 = Izquierda
-    let isPaused = false;
-
-    // ─── 1. DETECCIÓN DE ELEMENTO CENTRAL (Intersection Observer) ───
-    const observerOptions = {
-      root: slider,
-      rootMargin: "0px -45% 0px -45%", // Rango estricto en el centro matemático
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          images.forEach(img => img.classList.remove('is-active'));
-          entry.target.classList.add('is-active');
-        }
-      });
-    }, observerOptions);
-
-    images.forEach(img => observer.observe(img));
-
-    // ─── 2. MOTOR DE ANIMACIÓN LINEAL (CONTINUO) ───
-    function playTicker() {
-      if (!isPaused) {
-        const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-        // Control de límites para rebote de trayectoria
-        if (slider.scrollLeft >= maxScroll - 2 && direction === 1) {
-          direction = -1;
-        } else if (slider.scrollLeft <= 2 && direction === -1) {
-          direction = 1;
-        }
-
-        slider.scrollLeft += scrollSpeed * direction;
-      }
-      animationFrameId = requestAnimationFrame(playTicker);
-    }
-
-    function startTimeline() {
-      if (!animationFrameId) animationFrameId = requestAnimationFrame(playTicker);
-    }
-
-    function stopTimeline() {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = null;
-    }
-
-    // Interacciones de pausa: Mouse en Desktop / Touch en Móviles
-    slider.addEventListener('mouseenter', () => isPaused = true);
-    slider.addEventListener('mouseleave', () => isPaused = false);
-    slider.addEventListener('touchstart', () => isPaused = true, { passive: true });
-    slider.addEventListener('touchend', () => {
-      setTimeout(() => { isPaused = false; }, 1200); // Reanudación orgánica
-    });
-
-    // ─── 3. CONTROL DE CLICS (DESPLAZAR O ABRIR MODAL) ───
-    images.forEach(img => {
-      img.setAttribute('tabindex', '0');
-      img.setAttribute('role', 'button');
-
-      function handleAction() {
-        // Regla de Oro: Si no está en el centro, la centra en lugar de abrir el modal
-        if (!img.classList.contains('is-active')) {
-          img.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          return;
-        }
-        openProject(img);
-      }
-
-      img.addEventListener('click', handleAction);
-      img.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleAction();
-        }
-      });
-    });
-
-    // Arrancar el ciclo de este slider
-    startTimeline();
-
-    // Guardar los disparadores de control en el elemento para usarlos al cerrar el modal
-    slider.dataset.start = startTimeline;
-    slider.dataset.stop = stopTimeline;
-  });
-
-  // ─── 4. APERTURA DINÁMICA DEL MODAL ───
-  function openProject(img) {
-    // Detener la marcha de todos los sliders activos de la página
-    sliders.forEach(s => { if(s.dataset.stop) s.dataset.stop(); });
-
-    // Inyección de Data Attributes nativos al Dialog
+  /* ─── OPEN ─── */
+  function openModal(img) {
     document.getElementById('pf-modal-cover').src  = img.dataset.cover || '';
     document.getElementById('pf-modal-cover').alt  = img.dataset.title || '';
     document.getElementById('pf-modal-title').textContent = img.dataset.title || '';
@@ -307,23 +214,38 @@ document.addEventListener('contextmenu', e => {
     setTimeout(() => modalClose.focus(), 50);
   }
 
-  // ─── 5. CIERRE DEL MODAL Y REANUDACIÓN ───
-  function shutModal() {
+  /* ─── CLOSE ─── */
+  function closeModal() {
     modal.close();
     document.body.style.overflow = '';
-    // Despertar sliders de nuevo
-    sliders.forEach(s => { if(s.dataset.start) s.dataset.start(); });
   }
 
-  modalClose.addEventListener('click', shutModal);
+  /* ─── BIND IMAGES ─── */
+  images.forEach(img => {
+    img.addEventListener('click', () => openModal(img));
 
-  modal.addEventListener('click', e => {
-    if (!modal.querySelector('.pf-modal__inner').contains(e.target)) shutModal();
+    // Keyboard: Enter or Space on focused image
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(img);
+      }
+    });
   });
 
+  /* ─── CLOSE TRIGGERS ─── */
+  modalClose.addEventListener('click', closeModal);
+
+  // Click outside the panel
+  modal.addEventListener('click', e => {
+    if (!modal.querySelector('.pf-modal__inner').contains(e.target)) closeModal();
+  });
+
+  // ESC (native <dialog> fires 'cancel')
   modal.addEventListener('cancel', () => {
     document.body.style.overflow = '';
-    sliders.forEach(s => { if(s.dataset.start) s.dataset.start(); });
   });
 
 })();
