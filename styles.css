@@ -533,13 +533,13 @@ em { font-style: italic; color: var(--accent); }
   display: block;
 }
 
-/* S2 — Title + desc */
+/* S2 — Title + desc: una columna siempre */
 .pf-modal__meta {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 24px;
-  margin-bottom: 28px;
-  padding-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .pf-modal__title {
@@ -557,18 +557,18 @@ em { font-style: italic; color: var(--accent); }
   padding-top: 4px;
 }
 
-/* S3 — Three 1:1 */
+/* S3 — tres imágenes: una columna en móvil, tres en desktop */
 .pf-modal__trio {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-/* S4 — Two 1:1 */
+/* S4 — dos imágenes: una columna en móvil, dos en desktop */
 .pf-modal__pair {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 12px;
 }
 
@@ -588,12 +588,13 @@ em { font-style: italic; color: var(--accent); }
   transform: scale(1.04);
 }
 
-/* Responsive modal */
-@media (max-width: 768px) {
-  .pf-modal__inner { padding: 20px 16px; }
-  .pf-modal__meta { grid-template-columns: 1fr; gap: 10px; }
-  .pf-modal__trio { gap: 8px; }
-  .pf-modal__pair { gap: 8px; }
+/* Desktop: recupera el layout multi-columna */
+@media (min-width: 600px) {
+  .pf-modal__meta { flex-direction: row; }
+  .pf-modal__meta > div:first-child { flex: 1; }
+  .pf-modal__meta > div:last-child  { flex: 2; }
+  .pf-modal__trio { grid-template-columns: repeat(3, 1fr); }
+  .pf-modal__pair { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ═══════════════════════════════════════════
