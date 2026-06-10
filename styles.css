@@ -196,7 +196,7 @@ em { font-style: italic; color: var(--accent); }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-top: 28px;
+  margin-top: 38px;
   margin-bottom: 28px;
 }
 .hero__title {
