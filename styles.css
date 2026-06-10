@@ -30,25 +30,28 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
   scroll-behavior: smooth;
-  background: #0a1429;
-  overflow-x: hidden;
+  background-color: #0c0c0f; /* Color base de respaldo */
+  min-height: 100vh;
 }
 
+/* El lienzo del gradiente se queda estático detrás de toda la web */
 html::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -1;
-  background: radial-gradient(circle at top, #0d1932, #0a1429);
+  z-index: -2; /* Se ubica al fondo de absolutamente todo */
+  background: radial-gradient(circle at top, #111a2e 0%, #070b14 60%, #030508 100%);
+  pointer-events: none;
 }
 
 body {
   font-family: var(--sans);
   color: var(--text);
-  background: transparent;
+  background: transparent !important; /* Forzamos transparencia para revelar el html::before */
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-  /* overflow-x: hidden  ← quitar de aquí */
+  position: relative;
+  z-index: 1;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -159,13 +162,16 @@ em { font-style: italic; color: var(--accent); }
   align-items: center;
   justify-content: center;
   padding: var(--nav-h) 24px 80px;
-  overflow: hidden;
+  overflow: hidden; /* Mantiene sus animaciones internas controladas */
+  background: transparent !important;
 }
+
+/* El contenedor antiguo del fondo ahora es transparente */
 .hero__bg {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /*background: radial-gradient(circle at top, #0d1932, #0a1429);*/
+  background: transparent !important;
   pointer-events: none;
 }
 
@@ -372,6 +378,7 @@ em { font-style: italic; color: var(--accent); }
 
 .pf-section {
   padding: 0;
+  background: transparent !important; 
   position: relative;
   z-index: 2;
 }
@@ -623,7 +630,7 @@ em { font-style: italic; color: var(--accent); }
 .sobre-mi {
   padding: 60px 24px;
   border-top: 1px solid var(--border);
-  background: var(--bg);
+  background: transparent !important;
 }
 
 .sobre-mi__inner {
@@ -696,6 +703,7 @@ em { font-style: italic; color: var(--accent); }
    ============================================= */
 .contacto {
   padding: 120px 24px;
+  background: transparent !important; 
   border-top: 1px solid var(--border);
   text-align: center;
 }
@@ -738,7 +746,7 @@ em { font-style: italic; color: var(--accent); }
    ============================================= */
 .footer {
   /* Forzamos el fondo sólido oscuro (tu azul púrpura) para que no se filtre la galería claro */
-  background: #0d0d25; 
+  background: transparent !important;
   border-top: 1px solid var(--border);
   padding: 24px;
   
