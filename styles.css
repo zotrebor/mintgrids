@@ -95,16 +95,37 @@ em { font-style: italic; color: var(--accent); }
   align-items: center;
   justify-content: space-between;
 }
-.nav__logo {
+.brand {
   display: flex;
   align-items: center;
+  gap: 12px; /* Espacio perfecto entre ícono y texto */
+  text-decoration: none;
   color: #fff;
-  height: 55px;
 }
-.nav__logo svg {
-  height: 55px;
-  width: auto;
+
+.brand__icon {
+  width: 32px;  /* Controlas el tamaño del ícono de forma exacta */
+  height: 32px;
+  color: #00ffd4; /* Si usas fill="currentColor" en el SVG, puedes pintarlo desde CSS */
+  flex-shrink: 0;
 }
+
+.brand__text {
+  font-family: var(--sans); /* Usa Ubuntu automáticamente */
+  font-size: 1.25rem;
+  font-weight: 500;        /* Peso Medium para que se vea sofisticado */
+  letter-spacing: -0.03em; /* Un ajuste sutil tech para fuentes geométricas */
+  color: #fff;
+  line-height: 1;
+}
+
+/* Opcional: Si en móviles la pantalla es críticamente pequeña, puedes ocultar el texto y dejar solo el ícono */
+@media (max-width: 400px) {
+  .brand__text {
+    display: none;
+  }
+}
+
 .nav__links {
   display: flex;
   align-items: center;
