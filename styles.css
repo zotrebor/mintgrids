@@ -212,7 +212,7 @@ em { font-style: italic; color: var(--accent); }
   font-size: clamp(1rem, 1.8vw, 1.15rem);
   color: var(--text);
   line-height: 1.7;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 44px;
 }
 .hero__actions {
