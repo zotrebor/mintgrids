@@ -203,11 +203,36 @@ document.addEventListener('contextmenu', e => {
     document.getElementById('pf-modal-cover').alt  = img.dataset.title || '';
     document.getElementById('pf-modal-title').textContent = img.dataset.title || '';
     document.getElementById('pf-modal-desc').textContent  = img.dataset.desc  || '';
-    document.getElementById('pf-modal-sm1').src = img.dataset.sm1 || '';
-    document.getElementById('pf-modal-sm2').src = img.dataset.sm2 || '';
-    document.getElementById('pf-modal-sm3').src = img.dataset.sm3 || '';
-    document.getElementById('pf-modal-sq1').src = img.dataset.sq1 || '';
-    document.getElementById('pf-modal-sq2').src = img.dataset.sq2 || '';
+
+    // Helper: muestra u oculta un slot según si tiene imagen
+    function setSlot(id, src) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const wrap = el.closest('.pf-modal__sq-wrap');
+      if (src) {
+        el.src = src;
+        wrap.style.display = '';
+      } else {
+        el.src = '';
+        wrap.style.display = 'none';
+      }
+    }
+
+    setSlot('pf-modal-sm1', img.dataset.sm1);
+    setSlot('pf-modal-sm2', img.dataset.sm2);
+    setSlot('pf-modal-sm3', img.dataset.sm3);
+    setSlot('pf-modal-sq1', img.dataset.sq1);
+    setSlot('pf-modal-sq2', img.dataset.sq2);
+
+    // Oculta secciones completas si todos sus slots están vacíos
+    const trio = document.querySelector('.pf-modal__trio');
+    const pair = document.querySelector('.pf-modal__pair');
+
+    const trioVisible = [img.dataset.sm1, img.dataset.sm2, img.dataset.sm3].some(Boolean);
+    const pairVisible = [img.dataset.sq1, img.dataset.sq2].some(Boolean);
+
+    trio.style.display = trioVisible ? '' : 'none';
+    pair.style.display = pairVisible ? '' : 'none';
 
     modal.showModal();
     document.body.style.overflow = 'hidden';
