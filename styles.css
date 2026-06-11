@@ -534,7 +534,7 @@ em { font-style: italic; color: var(--accent); }
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .pf-modal__title {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: var(--sans);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: #fff;
