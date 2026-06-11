@@ -536,10 +536,11 @@ em { font-style: italic; color: var(--accent); }
 .pf-modal__title {
   font-family: var(--sans);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
+  font-weight: 500;
   color: #fff;
   line-height: 1.2;
 }
+
 .pf-modal__desc {
   font-size: 0.9rem;
   color: rgba(255,255,255,0.55);
