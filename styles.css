@@ -514,24 +514,31 @@ em { font-style: italic; color: var(--accent); }
 .pf-modal[open] .pf-modal__inner {
   transform: translateY(0) scale(1);
 }
+/* Close button */
 .pf-modal__close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  width: 36px; height: 36px;
+  position: fixed;   /* Cambiado de absolute a fixed para romper el scroll */
+  top: 30px;         /* Separación fija desde el borde superior de la pantalla */
+  right: 30px;       /* Separación fija desde el borde derecho de la pantalla */
+  z-index: 220;      /* Un número alto para asegurar que NUNCA quede detrás de una imagen */
+  width: 40px; 
+  height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(22, 22, 30, 0.9);
+  background: rgba(22, 22, 30, 0.85);
+  backdrop-filter: blur(8px); /* Le da un efecto glassmorphism premium al flotar */
+  -webkit-backdrop-filter: blur(8px);
   color: rgba(255,255,255,0.7);
   cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.2s, color 0.2s;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
 .pf-modal__close svg { width: 16px; height: 16px; }
 .pf-modal__close:hover {
   border-color: #00ffcc;
   color: #00ffcc;
+  transform: scale(1.05); /* Sutil feedback visual al pasar el cursor */
 }
 .pf-modal__cover-wrap {
   width: 100%;
