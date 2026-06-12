@@ -514,6 +514,45 @@ em { font-style: italic; color: var(--accent); }
 .pf-modal[open] .pf-modal__inner {
   transform: translateY(0) scale(1);
 }
+
+/* =============================================
+   PERSONALIZACIÓN DEL SCROLL DEL MODAL
+   ============================================= */
+
+/* El ancho fino para Chrome, Edge y Safari */
+.pf-modal__inner::-webkit-scrollbar {
+  width: 8px; 
+}
+
+/* El fondo del carril */
+.pf-modal__inner::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03); 
+  border-radius: 20px;
+}
+
+/* La barrita que se mueve */
+.pf-modal__inner::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 20px;
+  border: 2px solid transparent; 
+  background-clip: padding-box;  
+  transition: background 0.2s ease;
+}
+
+/* El efecto interactivo con tu color de acento MintGrids */
+.pf-modal__inner::-webkit-scrollbar-thumb:hover {
+  background: var(--accent); /* Se enciende en #00ffd4 */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* El soporte secundario exclusivo para Firefox */
+@supports (scrollbar-width: thin) {
+  .pf-modal__inner {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+}
 /* Close button */
 .pf-modal__close {
   position: fixed;   /* Cambiado de absolute a fixed para romper el scroll */
