@@ -502,8 +502,11 @@ em { font-style: italic; color: var(--accent); }
   width: min(860px, calc(100vw - 32px));
   height: 100dvh;
   overflow-y: auto;
-  background: #16161e;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* ─── EL TRUCO DE LA TRANSPARENCIA PREMIUM ─── */
+  background: rgba(22, 22, 30, 0.65); /* Bajamos la opacidad a 65% usando RGBA */
+  backdrop-filter: blur(16px);        /* Difumina el fondo radial trasero */
+  -webkit-backdrop-filter: blur(16px); /* Soporte obligatorio para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Un borde sutil que define el límite del cristal */
   border-radius: 20px;
   padding: 32px;
   scrollbar-width: thin;
