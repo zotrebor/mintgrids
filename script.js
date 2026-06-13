@@ -321,7 +321,7 @@ document.addEventListener('contextmenu', e => {
           opacity: 0;
           animation: letterIn 0.3s ease forwards;
           animation-delay: ${totalDelay}ms;
-          display: inline-block;
+          display: inline;
         `;
         em.appendChild(span);
         totalDelay += speed;
