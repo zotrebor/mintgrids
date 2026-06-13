@@ -335,6 +335,14 @@ em { font-style: italic; color: var(--accent); }
    Hero logo background animation 
 =================================== */
 
+.cubes-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
 .cube {
   position: absolute;
   top: 80vh;
