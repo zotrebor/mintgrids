@@ -354,6 +354,8 @@ em { font-style: italic; color: var(--accent); }
   transform: scale(0) rotate(0deg) translate(-50%, -50%);
   -webkit-animation: cube 8s ease-in forwards infinite;
           animation: cube 8s ease-in forwards infinite;
+          animation-delay: -4s;
+  -webkit-animation-delay: -4s;
 }
 .cube:nth-child(2n) {
   border-color: #164c50;
