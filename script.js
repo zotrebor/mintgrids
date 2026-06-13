@@ -290,19 +290,17 @@ document.addEventListener('contextmenu', e => {
   const title = document.querySelector('.hero__title');
   if (!title) return;
 
-  // Guarda el HTML original para preservar el <br> y el <em>
   const nodes = Array.from(title.childNodes);
   title.innerHTML = '';
 
   let totalDelay = 0;
-  const speed = 50; // ms entre cada letra
+  const speed = 50;
 
   nodes.forEach(node => {
     if (node.nodeType === Node.TEXT_NODE) {
-      // Texto plano — "Creativity"
       node.textContent.split('').forEach(char => {
         const span = document.createElement('span');
-        span.textContent = char;
+        span.textContent = char === ' ' ? '\u00A0' : char;
         span.style.cssText = `
           opacity: 0;
           animation: letterIn 0.3s ease forwards;
@@ -310,16 +308,15 @@ document.addEventListener('contextmenu', e => {
           display: inline-block;
         `;
         title.appendChild(span);
-        if (char !== ' ') totalDelay += speed;
+        totalDelay += speed;
       });
     } else if (node.nodeName === 'BR') {
       title.appendChild(document.createElement('br'));
     } else if (node.nodeName === 'EM') {
-      // Texto dentro del <em> — "with purpose"
       const em = document.createElement('em');
       node.textContent.split('').forEach(char => {
         const span = document.createElement('span');
-        span.textContent = char;
+        span.textContent = char === ' ' ? '\u00A0' : char;
         span.style.cssText = `
           opacity: 0;
           animation: letterIn 0.3s ease forwards;
@@ -327,7 +324,7 @@ document.addEventListener('contextmenu', e => {
           display: inline-block;
         `;
         em.appendChild(span);
-        if (char !== ' ') totalDelay += speed;
+        totalDelay += speed;
       });
       title.appendChild(em);
     }
