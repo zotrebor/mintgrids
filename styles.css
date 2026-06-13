@@ -594,6 +594,9 @@ em { font-style: italic; color: var(--accent); }
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
+  /* ─── OPTIMIZACIÓN DE CARGA Y RENDIMIENTO ─── */
+  content-visibility: auto;
+  contain-intrinsic-size: 4 / 3; /* Coincide con el aspect-ratio de su contenedor wrapper */
 }
 .pf-modal__meta {
   display: flex;
@@ -640,6 +643,9 @@ em { font-style: italic; color: var(--accent); }
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
+  /* ─── OPTIMIZACIÓN DE CARGA Y RENDIMIENTO ─── */
+  content-visibility: auto;
+  contain-intrinsic-size: 1 / 1; /* Coincide con el aspect-ratio de su contenedor wrapper */
 }
 .pf-modal__sq-wrap:hover .pf-modal__sq {
   transform: scale(1.04);

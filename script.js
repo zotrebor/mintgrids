@@ -185,7 +185,7 @@ document.addEventListener('contextmenu', e => {
 // --- PORTAFOLIO V.3 ---
 
 /* ═══════════════════════════════════════════
-   MINT GRIDS — portfolio.js (simple)
+   MINT GRIDS — portfolio.js (Optimizado con Lazy Loading)
    ═══════════════════════════════════════════ */
 
 'use strict';
@@ -199,17 +199,23 @@ document.addEventListener('contextmenu', e => {
 
   /* ─── OPEN ─── */
   function openModal(img) {
-    document.getElementById('pf-modal-cover').src  = img.dataset.cover || '';
-    document.getElementById('pf-modal-cover').alt  = img.dataset.title || '';
+    const coverEl = document.getElementById('pf-modal-cover');
+    
+    // La imagen de portada sí debe cargarse de inmediato (eager) porque es lo primero que se ve al abrir
+    coverEl.src  = img.dataset.cover || '';
+    coverEl.alt  = img.dataset.title || '';
+    coverEl.loading = 'eager'; 
+    
     document.getElementById('pf-modal-title').textContent = img.dataset.title || '';
     document.getElementById('pf-modal-desc').textContent  = img.dataset.desc  || '';
 
-    // Helper: muestra u oculta un slot según si tiene imagen
+    // Helper: muestra u oculta un slot según si tiene imagen y le inyecta LAZY LOADING nativo
     function setSlot(id, src) {
       const el = document.getElementById(id);
       if (!el) return;
       const wrap = el.closest('.pf-modal__sq-wrap');
       if (src) {
+        el.loading = 'lazy'; // <-- BLINDAJE: Fuerza al navegador a no descargar la imagen hasta hacer scroll en el modal
         el.src = src;
         wrap.style.display = '';
       } else {
@@ -231,8 +237,8 @@ document.addEventListener('contextmenu', e => {
     const trioVisible = [img.dataset.sm1, img.dataset.sm2, img.dataset.sm3].some(Boolean);
     const pairVisible = [img.dataset.sq1, img.dataset.sq2].some(Boolean);
 
-    trio.style.display = trioVisible ? '' : 'none';
-    pair.style.display = pairVisible ? '' : 'none';
+    if (trio) trio.style.display = trioVisible ? '' : 'none';
+    if (pair) pair.style.display = pairVisible ? '' : 'none';
 
     modal.showModal();
     document.body.style.overflow = 'hidden';
@@ -243,6 +249,10 @@ document.addEventListener('contextmenu', e => {
   function closeModal() {
     modal.close();
     document.body.style.overflow = '';
+    
+    // Limpieza opcional: vacía los src al cerrar para liberar memoria del navegador inmediatamente
+    const modalImgs = modal.querySelectorAll('.pf-modal__inner img');
+    modalImgs.forEach(img => img.src = '');
   }
 
   /* ─── BIND IMAGES ─── */
