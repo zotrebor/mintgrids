@@ -1053,3 +1053,7 @@ em { font-style: italic; color: var(--accent); }
   0%, 100% { box-shadow: 0 0 10px rgba(51,204,230,0.4); }
   50% { box-shadow: 0 0 25px rgba(51,204,230,0.8); }
 }
+@keyframes letterIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
