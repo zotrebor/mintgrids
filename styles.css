@@ -120,7 +120,7 @@ em { font-style: italic; color: var(--accent); }
 }
 
 /* Opcional: Si en móviles la pantalla es críticamente pequeña, puedes ocultar el texto y dejar solo el ícono */
-@media (max-width: 600px) {
+@media (max-width: 300px) {
   .brand__text {
     display: none;
   }
