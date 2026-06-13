@@ -333,7 +333,7 @@ em { font-style: italic; color: var(--accent); }
 
 /* =================================
    Hero logo background animation 
-===================================*/
+=================================== 
 
 .hero__logos {
   position: absolute;
@@ -386,6 +386,7 @@ em { font-style: italic; color: var(--accent); }
   40%  { stroke-dashoffset: 0;    stroke-width: 1.5; filter: brightness(1.5); }
   100% { stroke-dashoffset: 0;    stroke-width: 1;   filter: brightness(0.5); }
 }
+*/
 
 /* =============================================
    MARQUEE
