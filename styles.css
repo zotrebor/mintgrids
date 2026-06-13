@@ -341,14 +341,14 @@ em { font-style: italic; color: var(--accent); }
   left: 45vw;
   width: 10px;
   height: 10px;
-  border: solid 1px #003298;
+  border: solid 1px #164c50;
   transform-origin: top left;
   transform: scale(0) rotate(0deg) translate(-50%, -50%);
   -webkit-animation: cube 12s ease-in forwards infinite;
           animation: cube 12s ease-in forwards infinite;
 }
 .cube:nth-child(2n) {
-  border-color: #0051f4;
+  border-color: #164c50;
 }
 .cube:nth-child(2) {
   -webkit-animation-delay: 2s;
