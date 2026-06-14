@@ -352,8 +352,8 @@ em { font-style: italic; color: var(--accent); }
   border: solid 1px #164c50;
   transform-origin: top left;
   transform: scale(0) rotate(0deg) translate(-50%, -50%);
-  -webkit-animation: cube 14s ease-in forwards infinite;
-          animation: cube 14s ease-in forwards infinite;
+  -webkit-animation: cube 16s ease-in forwards infinite;
+          animation: cube 16s ease-in forwards infinite;
           animation-delay: -4s;
   -webkit-animation-delay: -4s;
 }
